@@ -9,7 +9,7 @@ extracted digit. For instance, 932 % 10 = 2 and 932 / 10 = 93.
 
 package com.structured_programming_SWE201.Chapter1and2.Assignments;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class SolutionOne {
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class SolutionOne {
             int total = hundreds + tens + lessThanTen;
 
             // Display results
-            System.out.println("The sum of the digits is " + total);
+            System.out.println("The sum of all digits is " + total);
 
         } else {
             System.out.println("Undefined");

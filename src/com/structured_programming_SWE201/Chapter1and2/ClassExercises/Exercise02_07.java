@@ -13,9 +13,9 @@ public class Exercise02_07 {
          
          Double numberOfDays = minutes / (24 * 60);
          Double numberOfYears = numberOfDays / 365;
-         Double remaingDays = numberOfDays % 365;
+         Double remainingDays = numberOfDays % 365;
    
     System.out.println(minutes + " minutes is approximately " +
-      numberOfYears + " years and " + remaingDays + " days remaining");
+      numberOfYears + " years and " + remainingDays + " days remaining");
     }
 }
