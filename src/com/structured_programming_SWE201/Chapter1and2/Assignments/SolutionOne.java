@@ -18,31 +18,31 @@ public class SolutionOne {
 
         // Assign the value entered to a variable
         System.out.print("Enter a number between 0 and 1000: ");
-        int userInput = scanner.nextInt();
+        int userInput, num1, num2, num3, num4;
+
+        userInput = scanner.nextInt();
 
         if (userInput >= 0 && userInput <= 1000) {
             // beginning of total calculation, Extract the digit less than 10
-            int lessThanTen = userInput % 10;
+            num2 = userInput % 10;
 
             // get the extracted digit out of the stack
-            userInput /= 10;
+            num1 = userInput/10;
 
             // Extract the digit between 10 and 99
-            int tens = userInput % 10;
+            num3 = num1 % 10;
 
             // get the extracted digit out of the stack
-            userInput /= 10;
+            num1 /= 10;
 
             // Extract the digit between 100 and 999
-            int hundreds = userInput % 10;
-
+            num4 = num1 % 10;
+            
             // get the extracted digit out of the stack
-            userInput /= 10;
+            num1 /= 10;
 
-            int total = hundreds + tens + lessThanTen;
-
-            // Display results
-            System.out.println("The sum of all digits is " + total);
+            System.out.println("The sum of all digits in " + userInput
+                    + " is " + (num4 + num3 + num2));
 
         } else {
             System.out.println("Undefined");
