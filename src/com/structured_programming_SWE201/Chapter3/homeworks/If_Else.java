@@ -11,17 +11,9 @@ public class If_Else {
 
     static class Main {
         public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int minors = 0, adults = 0, seniors = 0;
-            int age = scanner.nextInt();
-
-            if (age < 18)
-                minors++;
-            else if (age < 65)
-                adults++;
-            else
-                seniors++;
-
+            
+            boolean x = Character.isDigit('6');
+            System.out.println(x);
         }
     }
 }

@@ -1,7 +1,7 @@
 # Chapter 3
 
-Property: Moutasim EL Ayoubi
-Tags: 0556170992
+Created by: Moutasim EL Ayoubi
+Mail: moutasim9997@gmail.com
 
 ### **The boolean Type and Operators**
 
@@ -15,11 +15,11 @@ Tags: 0556170992
 - Java if statement is the most simple decision-making statement. It is used to decide whether a certain statement or block of statements will be executed or not
 
 ```java
-if(condition) 
-{
-   // Statements to execute if
-   // condition is true
-}
+if(condition)
+        {
+        // Statements to execute if
+        // condition is true
+        }
 ```
 
 ### **Working of if statement**
@@ -27,8 +27,8 @@ if(condition)
 1. Control falls into the if block.
 2. The flow jumps to Condition.
 3. Condition is tested.
-    1. If Condition yields true, go to Step 4.
-    2. If Condition yields false, go to Step 5.
+   1. If Condition yields true, go to Step 4.
+   2. If Condition yields false, go to Step 5.
 4. The if-block or the body inside the if is executed.
 5. Flow steps out of the if block.
 
@@ -40,16 +40,16 @@ We also have nested if-else statements that look like this (Please practice it m
 //assuming we have a variable (score) we can print out a letter 
 //out of it for grading for example
 if (score >= 90.0)
-  System.out.print("A"); //make sure to close the if statement here with (;)
-else if (score >= 80.0) {
-  System.out.print("B")
-} // or you can use curly braces instead
-else if (score >= 70.0)
-  System.out.print("C");
-else if (score >= 60.0)
-  System.out.print("D");
-else
-  System.out.print("F");
+        System.out.print("A"); //make sure to close the if statement here with (;)
+        else if (score >= 80.0) {
+        System.out.print("B")
+        } // or you can use curly braces instead
+        else if (score >= 70.0)
+        System.out.print("C");
+        else if (score >= 60.0)
+        System.out.print("D");
+        else
+        System.out.print("F");
 /* note that you can add curly braces to if else statement to include more
 than one statement to execute */
 ```
@@ -68,29 +68,29 @@ Use the switch statement to select one of many code blocks to be executed.
 
 ```java
 int day = 4;
-switch (day) {
-  case 1:
-    System.out.println("Monday");
-    break;
-  case 2:
-    System.out.println("Tuesday");
-    break;
-  case 3:
-    System.out.println("Wednesday");
-    break;
-  case 4:
-    System.out.println("Thursday");
-    break;
-  case 5:
-    System.out.println("Friday");
-    break;
-  case 6:
-    System.out.println("Saturday");
-    break;
-  case 7:
-    System.out.println("Sunday");
-    break;
-}
+        switch (day) {
+        case 1:
+        System.out.println("Monday");
+        break;
+        case 2:
+        System.out.println("Tuesday");
+        break;
+        case 3:
+        System.out.println("Wednesday");
+        break;
+        case 4:
+        System.out.println("Thursday");
+        break;
+        case 5:
+        System.out.println("Friday");
+        break;
+        case 6:
+        System.out.println("Saturday");
+        break;
+        case 7:
+        System.out.println("Sunday");
+        break;
+        }
 ```
 
 ### **Conditional Operator**
@@ -103,12 +103,12 @@ Example:
 
 ```java
 public class condiop {
- public static void main(String[] args) {
-  String out;
-  int  a = 6, b = 12;
-  out = a==b ? "Yes":"No"; //here is the ternary operator
-  System.out.println("Ans: "+out);
- }
+   public static void main(String[] args) {
+      String out;
+      int  a = 6, b = 12;
+      out = a==b ? "Yes":"No"; //here is the ternary operator
+      System.out.println("Ans: "+out);
+   }
 }
 ```
 
@@ -116,7 +116,7 @@ Example 2:
 
 ```java
 (num % 2 == 0)? num + “is even” :
-num + “is odd”);
+        num + “is odd”);
 ```
 
 That's it, Congratulations in finishing Chapter 3 Quick Review

@@ -1,6 +1,7 @@
 # Chapter 2
 
-Tags: programming
+Created by: Moutasim EL Ayoubi
+Mail: moutasim9997@gmail.com
 
 ### Integer Division
 
@@ -41,8 +42,8 @@ Tags: programming
   celsius = (5.0 / 9) * (fahrenheit – 32) //make sure to put 5.0 not 5 only
 
 - Problem: Displaying Current Time
-    - we will use currentTimeMillis method
-    - returns the current time in milliseconds since the midnight, January 1, 1970 GMT
+  - we will use currentTimeMillis method
+  - returns the current time in milliseconds since the midnight, January 1, 1970 GMT
 
     ```java
     public class CurrentTime {
@@ -98,7 +99,7 @@ Decrement operator: - -var_name; (or) var_name - -;
 ### Type Casting
 
 - Implicit casting
-    - double d = 3; (type widening)
+  - double d = 3; (type widening)
 - Explicit casting
-    - int i = (int)3.0; (type narrowing)
-    - int i = (int)3.9; (Fraction part is truncated)
+  - int i = (int)3.0; (type narrowing)
+  - int i = (int)3.9; (Fraction part is truncated)
