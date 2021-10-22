@@ -10,13 +10,13 @@ public class ReadingString {
          
          System.out.print("Enter a sentence : ");
          
-         String statment = input.nextLine();
+         String statement = input.nextLine();
          
          
-         System.out.println("Your name is : " +statment.length() );
+         System.out.println("Your name is : " +statement.length() );
          
-         System.out.println(statment.substring(0, 10));
-         System.out.println(statment.substring(3));
+         System.out.println(statement.substring(0, 10));
+         System.out.println(statement.substring(3));
     }
     
 }
