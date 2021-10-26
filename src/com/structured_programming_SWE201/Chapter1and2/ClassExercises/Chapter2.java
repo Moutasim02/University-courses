@@ -10,6 +10,7 @@ public class Chapter2 {
         age=2;
         System.out.println("Hello");
         System.out.println(age);
+
     }
     
 }

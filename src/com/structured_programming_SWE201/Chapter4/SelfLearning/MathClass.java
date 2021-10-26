@@ -43,7 +43,7 @@ public class MathClass {
 
         System.out.println("a random number from 0.0 to 1.0: " + Math.random());
         System.out.println("a random integer between 0 aned 9: " + (int) Math.random() * 10);
-        System.out.println("a random integer between 50 and 99: " + 50 + (int) (Math.random() * 50));
+        System.out.println("a random integer between 50 and 99: " + (int) (Math.random() * 50)+50);
         int min=0, max=9;
         int rand_int = (int)(Math.random()*((max-min)+1))+min;
         System.out.println("Random Integers: "+rand_int);
@@ -53,7 +53,7 @@ public class MathClass {
         char ch = 'Z';
         System.out.println("ch is digit?: " + isDigit(ch));
         System.out.println("ch is letter?: " + isLetter(ch));
-        System.out.println("ch is isLetterOrDigit?: " + Character.isLetterOrDigit(ch));
+        System.out.println("ch is isLetterOrDigit?: "  + Character.isLetterOrDigit(ch));
         System.out.println("ch is isLowercase?: " + Character.isLowerCase(ch));
         System.out.println("ch is isUppercase?: " + Character.isUpperCase(ch));
         System.out.println("ch is toUppercase?: " + Character.toUpperCase(ch));
