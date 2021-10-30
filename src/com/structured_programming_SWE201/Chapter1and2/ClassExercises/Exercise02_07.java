@@ -10,11 +10,11 @@ public class Exercise02_07 {
 
         System.out.println("Enter the number of minutes:");
 
-        Double minutes = khaled.nextDouble();
+        double minutes = khaled.nextDouble();
 
-        Double numberOfDays = minutes / (24 * 60);
-        Double numberOfYears = numberOfDays / 365;
-        Double remainingDays = numberOfDays % 365;
+        double numberOfDays = minutes / (24 * 60);
+        double numberOfYears = numberOfDays / 365;
+        double remainingDays = numberOfDays % 365;
 
         System.out.println(minutes + " minutes is approximately " +
                 numberOfYears + " years and " + remainingDays + " days remaining");
