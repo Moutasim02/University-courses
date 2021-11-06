@@ -1,13 +1,12 @@
 package com.structured_programming_SWE201.Chapter5.Exercising;
 
+import java.io.*;
+import java.util.*;
+
 public class Testing {
+
     public static void main(String[] args) {
-        int i = 9, k = 8;
-        while (i<17) {
-            if ((i+1)%k == 0) {
-                System.out.println(i);
-            }
-            i++;
-        }
+        System.out.println((double) 18/4);
     }
 }
+
