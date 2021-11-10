@@ -39,7 +39,7 @@ public class Text_Encryption {
             String textToEncrypt = textInput.nextLine();
             System.out.print("key: ");
             int keyToUse  = textInput.nextInt();
-            textToEncrypt = textToEncrypt.replaceAll("\\s+","");
+//            textToEncrypt = textToEncrypt.replaceAll("\\s+","");
 
             for (int i = 0; true; i++) {
                 if (keyToUse > 50 && keyToUse <= 0) {
@@ -47,15 +47,30 @@ public class Text_Encryption {
                     keyToUse = textInput.nextInt();
                 } else {
                     for (int j = 0; j < textToEncrypt.length(); j++) {
-
                         char temp = textToEncrypt.charAt(j);
-                        temp += keyToUse;
-                        System.out.print(temp);
+                        if (temp >= 'A' && temp <= 'Z') {
+                            temp = (char) (temp + keyToUse);
+                            if(temp > 'Z') { // go back to A in Ascii
+                                temp = (char) (temp+'A'-'Z'-1);
+                                textToEncrypt += temp;
+                            }
+                        }
+
+                        else if (temp >= 'a' && temp <= 'z') {
+                            temp = (char) (temp + keyToUse);
+                            if(temp > 'z') { // go back to a in Ascii
+                                temp = (char) (temp+'a'-'z'-1);
+                                textToEncrypt += temp;
+                            }
+                            } else
+                                textToEncrypt += temp;
+                        break;
+                        }
                     }
-                    System.out.println("\n\nBye");
+                    System.out.println("Enrypted text is: " + textToEncrypt);
                     break;
 
                 }
             }
     }
-}
+
