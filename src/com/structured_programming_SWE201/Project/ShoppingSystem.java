@@ -2,7 +2,6 @@ package com.structured_programming_SWE201.Project;
 
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
 
 public class ShoppingSystem {
     int selectedItemNumber =0;
