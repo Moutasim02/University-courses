@@ -230,6 +230,8 @@ public class Text_Encryption {
                 decryptedText = decryptedText + table[x][y];
             }
         }
+        System.out.println(decryptedText);
+
         String decr = "";
         for (int j = 0; j < originalText.length(); j++) {
             for (int k = 0; k < decryptedText.length(); k++) {
