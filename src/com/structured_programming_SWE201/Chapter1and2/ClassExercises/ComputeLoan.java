@@ -40,4 +40,5 @@ public class ComputeLoan {
 
         System.out.println("Total interest ts AED " + (int) (totalInterest * 100) / 100.0);
     }
+
 }
