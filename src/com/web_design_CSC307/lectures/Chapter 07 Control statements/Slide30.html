@@ -1,0 +1,33 @@
+<!--Consider the following problem statement:
+A class of ten students took a quiz.
+The grades (integers in the range 0 to 100)
+ for this quiz are available to you.
+ Determine the class average on the quiz
+ -->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>While Loop Ex1</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <script>
+      var c = 1, g, sum = 0, avg, count = 0;
+
+      while(c <= 10)
+      {
+        g = parseInt(window.prompt("Enter a grade"));
+        sum = sum + g;
+        count++;
+        c += 1;
+      }
+      avg = sum / count;
+      document.write("<p>The average is " + avg + "</p>");
+  </script>
+<body>
+  <script>
+
+
+  </script>
+</body>
+</html>

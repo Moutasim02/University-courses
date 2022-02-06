@@ -1,0 +1,29 @@
+<!--Making HTML Tables using JS Loop-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Chapter 8, slide 13</title>
+  <meta charset="utf-8">
+  <style>
+    tr.oddrow {background-color: skyblue;}
+    tr.evenrow {background-color: tomato;}
+  </style>
+</head>
+<body>
+<script>
+  document.write("<table border = '1'>");
+  document.write("<tr><th>Num</th><th>Num<sup>Num</sup></th></tr>");
+  for(var r = 1; r <= 10; r++)
+  {
+    if(r %2 != 0)
+      document.write("<tr class = 'oddrow'><td>" + r +
+      "</td><td>" + Math.pow(r, 2) + "</td></tr>");
+    else
+      document.write("<tr class = 'evenrow'><td>" + r +
+      "</td><td>" + Math.pow(r, 2) + "</td></tr>");
+  }
+  document.write("</table>");
+</script>
+
+</body>
+</html>

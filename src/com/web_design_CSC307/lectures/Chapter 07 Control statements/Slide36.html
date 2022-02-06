@@ -1,0 +1,38 @@
+<!--write a script that will ask for an arbitrary
+ number of students grades (quiz grades), compute
+ and display the average. The value -1 ends the script-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>While Loop Ex1</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <script>
+      var g, sum = 0, avg, count = 0;
+
+      g = parseInt(window.prompt("Enter a grade or -1 to stop"));
+      while(g != -1)
+      {
+        sum += g;
+        count++;
+        g = parseInt(window.prompt("Enter another grade or -1 to stop"));
+      }
+      if(count > 0){
+        avg = sum / count;
+      document.write("<p> The average is " + avg + "</p>");
+      }
+      else {
+        document.write("Cannot divide by zero");
+      }
+
+
+
+  </script>
+<body>
+  <script>
+
+
+  </script>
+</body>
+</html>
