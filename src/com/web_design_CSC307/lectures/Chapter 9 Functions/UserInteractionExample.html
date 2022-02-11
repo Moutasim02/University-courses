@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>User Interaction General Example</title>
+  <meta charset="utf-8">
+</head>
+<body id = "b1">
+  <script>
+    function display()
+    {
+      if(document.getElementById("r1").checked)
+      {
+        document.getElementById("result1").innerHTML = "Green";
+        document.getElementById("result1").style.background = "green";
+      }
+      else if(document.getElementById("r2").checked)
+      {
+        document.getElementById("result1").innerHTML = "Orange";
+        document.getElementById("result1").style.background = "orange";
+      }
+      else if(document.getElementById("r3").checked)
+      {
+        document.getElementById("result1").innerHTML = "Red";
+        document.getElementById("result1").style.background = "red";
+      }
+    }
+
+    function choose()
+    {
+      var op = document.getElementById("sct").value;
+
+      if(op == "One")
+      {
+        document.getElementById("result1").innerHTML = "Bye Bye";
+        document.getElementById("result1").style.color = "blue";
+      }
+      else if(op == "Two")
+      {
+        location.href = "Slide11.html";
+      }
+
+
+    function color()
+    {
+      document.getElementById("b1").style.background = "red";
+    }
+
+  </script>
+
+  <form>
+    <input type = "radio" name = "rad" id = "r1" onclick = "display()">
+    <label>Green</label>
+    <p>
+    <input type = "radio" name = "rad" id = "r2" onclick = "display()">
+    <label>Orange</label>
+    <p>
+    <input type = "radio" name = "rad" id = "r3" onclick = "display()">
+    <label>Red</label>
+    <p id = "result1"></p>
+    <hr>
+    <select id = "sct" onclick = "choose()">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+  <hr>
+  <input type = "button" value = "ClickMe" onclick = "print()">
+    <input type = "button" value = "Change" onclick = "color()">
+
+  </form>
+</body>
+</html>

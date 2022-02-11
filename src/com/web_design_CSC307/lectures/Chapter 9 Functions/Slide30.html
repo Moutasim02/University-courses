@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<script>
+   function roll()
+   {
+      var r1 = Math.floor(Math.random() * 6) + 1;
+      var im1 = document.getElementById("img1");
+      im1.setAttribute("src", "images/die" + r1 + ".png");
+
+      var r2 = Math.floor(Math.random() * 6) + 1;
+      var im2 = document.getElementById("img2");
+      im2.setAttribute("src", "images/die" + r2 + ".png");
+
+      var r3 = Math.floor(Math.random() * 6) + 1;
+      var im3 = document.getElementById("img3");
+      im3.setAttribute("src", "images/die" + r3 + ".png");
+
+      var r4 = Math.floor(Math.random() * 6) + 1;
+      var im4 = document.getElementById("img4");
+      im4.setAttribute("src", "images/die" + r4 + ".png");
+
+      var r5 = Math.floor(Math.random() * 6) + 1;
+      var im5 = document.getElementById("img5");
+      im5.setAttribute("src", "images/die" + r5 + ".png");
+
+      var r6 = Math.floor(Math.random() * 6) + 1;
+      var im6 = document.getElementById("img6");
+      im6.setAttribute("src", "images/die" + r6 + ".png");
+   }
+</script>
+
+<form>
+   <input type = "button" value = "Roll" onclick = "roll()" />
+   <p>
+      <img src = "images/blank.png" id = "img1" />
+      <img src = "images/blank.png" id = "img2" />
+      <img src = "images/blank.png" id = "img3" />
+      <img src = "images/blank.png" id = "img4" />
+      <img src = "images/blank.png" id = "img5" />
+      <img src = "images/blank.png" id = "img6" />
+   </p>
+</form>
+
+</body>
+
+</html>

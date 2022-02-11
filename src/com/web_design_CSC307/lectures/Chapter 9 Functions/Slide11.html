@@ -1,0 +1,25 @@
+<!--Consider a script (Fig. 9.2) that uses a function square
+  to calculate the squares of the integers from 1 to 10.-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Slide 11 Functions</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <script>
+
+    function square(x)
+    {
+      return x * x; //return Math.pow(x, 2);
+    }
+
+    for(var i = 1; i <= 10; i++)
+    {
+      document.write("<p>The square of " + i + " is " + square(i) + "</p>");
+    }
+
+
+  </script>
+</body>
+</html>

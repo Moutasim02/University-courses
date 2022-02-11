@@ -1,0 +1,24 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Random Number Example 1</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <script>
+
+    for(var x = 1; x <= 30; x++)
+    {
+      var r = Math.floor(Math.random() * 6) + 1;
+      if(x % 15 == 0)
+        document.write("<br>");
+      else {
+        document.write(r + " ");
+      }
+    }
+
+
+  </script>
+</body>
+</html>

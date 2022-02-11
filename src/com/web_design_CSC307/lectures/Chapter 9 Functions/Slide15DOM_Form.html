@@ -1,0 +1,39 @@
+<!--The script in our next example (Fig. 9.3) uses a programmer-defined
+function called maximum to determine and return the largest
+of three floating-point values.-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Slide 15 Functions</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <script>
+        function maximum()
+        {
+          var n1 = parseFloat(document.getElementById("txt1").value);
+          var n2 = parseFloat(document.getElementById("txt2").value);
+          var n3 = parseFloat(document.getElementById("txt3").value);
+
+          var maxValue = Math.max(n1, n2, n3);
+
+          document.getElementById("result").innerHTML = maxValue;
+          document.getElementById("out1").innerHTML = "Murad";
+
+        }
+  </script>
+  <form>
+    <label>Enter First Number</label>
+    <input type = "text" id = "txt1" size = "3"><p>
+    <label>Enter Second Number</label>
+    <input type = "text" id = "txt2" size = "3"><p>
+    <label>Enter Third Number</label>
+    <input type = "text" id = "txt3" size = "3"><p>
+
+    <input type = "button" value = "Compute" onclick = "maximum()">
+    <p>The maximum is <span id = "result"></span></p>
+    <p id = "out1"></p>
+
+  </form>
+</body>
+</html>
