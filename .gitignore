@@ -1,12 +1,6 @@
 /out/
 .gitignore
-/src/com/structured_programming_SWE201/Chapter1and2/Assignments/
-/src/com/structured_programming_SWE201/Chapter4/classAssignment/
-src/com/structured_programming_SWE201/Chapter4/SelfLearning/Testing.java
-src/com/structured_programming_SWE201/Project/ProductsForShopify.java
-src/com/structured_programming_SWE201/Project/ShopifyCLI.java
-src/com/structured_programming_SWE201/Project/ShopifyCLI.java
-src/com/structured_programming_SWE201/Project/ProductsForShopify.java
-src/com/structured_programming_SWE201/Chapter7/output.docx
-src/com/structured_programming_SWE201/Chapter5/test.java
 /bin/
+.classpath
+.project
+
