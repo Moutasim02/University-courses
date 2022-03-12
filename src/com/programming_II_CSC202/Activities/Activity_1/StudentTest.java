@@ -2,11 +2,24 @@ package com.programming_II_CSC202.Activities.Activity_1;
 
 public class StudentTest {
     public static void main(String[] args) {
-        Student st1 = new Student();
-        System.out.println("Name: " + st1.setName("Moutasim"));
-        System.out.println("Current Year: " + st1.setYear(2));
-        System.out.println("ID: " + st1.setId(1080415));
-        System.out.println("Phone: " + st1.getPhone());
-        System.out.println("Status: " + st1.generateStatus());
+        Student firstStudent = new Student();
+        firstStudent.setStudentID(1079530);
+        firstStudent.setGraduationSchool("Al Nahda");
+        firstStudent.setAddress("MBZ");
+        firstStudent.setMajor("CSE");
+        firstStudent.setGpa(4.0);
+        firstStudent.setDegree("Bachelor");
+        firstStudent.setAge(18);
+
+        System.out.println("Student One identity: \n"+
+            firstStudent.getStudentID() + "\n" +
+            firstStudent.getGraduationSchool()+ "\n" +
+            firstStudent.getAddress()+ "\n" +
+            firstStudent.getMajor()+ "\n" +
+            firstStudent.getGpa()+ "\n" +
+            firstStudent.getDegree()+ "\n" +
+            firstStudent.getAge()
+        );
+
     }
 }
