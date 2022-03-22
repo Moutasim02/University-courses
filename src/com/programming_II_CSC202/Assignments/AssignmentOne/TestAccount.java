@@ -1,4 +1,6 @@
-package com.programming_II_CSC202.Activities.AssignmentOne;
+package com.programming_II_CSC202.Assignments.AssignmentOne;
+
+import java.util.Date;
 
 public class TestAccount {
     private static final String RED = "\u001b[31m";
@@ -38,9 +40,8 @@ public class TestAccount {
         ceo.setName("Khaled");
         ceo.setAddress("Abu Dhabi");
 
-        Account khaled = new Account();
-        khaled.setBalance(30000);
-        khaled.setAnnualInterestRate(0.045);
+        Account khaled = new Account(30000,0.045, new Date());
+
         // TODO: "Display the object in 4"
         System.out.println("\nKhaled's Account Summary: \n" + khaled.toString());
     }

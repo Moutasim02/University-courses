@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Activities.AssignmentOne;
+package com.programming_II_CSC202.Assignments.AssignmentOne;
 
 public class Owner {
     private int id = 0;

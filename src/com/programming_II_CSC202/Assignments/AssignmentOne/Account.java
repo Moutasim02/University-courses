@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Activities.AssignmentOne;
+package com.programming_II_CSC202.Assignments.AssignmentOne;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ public class Account {
 
     // Monthly Interest Amount
     public double getMonthlyInterest() {
-        double monthlyInterest = balance * (annualInterestRate / 1200);
+        double monthlyInterest = ((balance * annualInterestRate / 1200) / 1000) * 1000.0;
         return monthlyInterest;
     }
 
@@ -36,7 +36,7 @@ public class Account {
         if (amountToWithdraw > balance) {
             System.out.println(RED + "Can't withdraw as you don't have sufficient funds");
         } else {
-            System.out.println("Your updated balance after successful withdrawal is: " + (balance += amountToWithdraw) + GREEN);
+            System.out.println("Your updated balance after successful withdrawal is: " + (balance -= amountToWithdraw) + GREEN);
         }
     }
 
