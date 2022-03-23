@@ -8,16 +8,8 @@ public class TestAccount {
 
     public static void main(String[] args) {
 
-        Owner owner = new Owner();
-        // TODO: Shall we use setters to specify the values for the object? Or just use Non default constructor?
-        owner.setId(1122);
-        owner.setName("Moutasim El Ayoubi");
-        owner.setAddress("MBZ City");
-
-        Account moutasim = new Account();
-        moutasim.setBalance(20000);
-        moutasim.setAnnualInterestRate(0.045);
-        // TODO: "Owner object created in 1 above" Does it mean we should extend class Owner?!
+        Owner owner = new Owner(1122,"Moutasim El Ayoubi","MBZ City");
+        Account moutasim = new Account(20000, 0.045, new Date());
 
         System.out.println(BLUE + "\nDear " + owner.getName() + " with the ID: " + owner.getId());
         moutasim.withdraw(2500);
@@ -25,7 +17,20 @@ public class TestAccount {
         System.out.println("\nDear " + owner.getName() + " with the ID: " + owner.getId());
         moutasim.deposit(3000);
 
-        System.out.println(RED + "\n   _____                                            \n" +
+        Owner ceo = new Owner(7865, "Khaled", "Abu Dhabi");
+        Account khaled = new Account(30000,0.045, new Date());
+
+        System.out.println(BLUE + "\nDear " + ceo.getName() + " with the ID: " + ceo.getId());
+        khaled.withdraw(2500);
+
+        System.out.println("\nDear " + ceo.getName() + " with the ID: " + ceo.getId());
+        khaled.deposit(3000);
+
+        System.out.println(RED + "\n-------------------------------------------\nAfter account transfer from " + ceo.getId()
+                + " to " + owner.getId() + ":\n" + "-------------------------------------------");
+        moutasim.toAccount(khaled, moutasim, 2500);
+
+        System.out.println(RED + "\n   _____                         \n" +
                 "  / ____|                                           \n" +
                 " | (___  _   _ _ __ ___  _ __ ___   __ _ _ __ _   _ \n" +
                 "  \\___ \\| | | | '_ ` _ \\| '_ ` _ \\ / _` | '__| | | |\n" +
@@ -34,15 +39,6 @@ public class TestAccount {
                 "                                               __/ |\n" +
                 "                                              |___/ ");
         System.out.println("\nMoutasim's Account Summary: \n" + moutasim.toString());
-
-        Owner ceo = new Owner();
-        ceo.setId(7865);
-        ceo.setName("Khaled");
-        ceo.setAddress("Abu Dhabi");
-
-        Account khaled = new Account(30000,0.045, new Date());
-
-        // TODO: "Display the object in 4"
         System.out.println("\nKhaled's Account Summary: \n" + khaled.toString());
     }
 }
