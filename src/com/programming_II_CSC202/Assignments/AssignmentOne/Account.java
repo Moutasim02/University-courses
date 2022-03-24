@@ -5,10 +5,11 @@ import java.util.Date;
 public class Account {
     private int balance = 0;
     private double annualInterestRate;
-    private Date dateCreated = new Date();
+    private Date dateCreated;
 
     private static final String RED = "\u001b[31m";
     private static final String GREEN = "\u001b[32m";
+    private static final String BLUE = "\u001b[34m";
 
     public Account() {
         // Default constructor to make the class mutable
@@ -20,14 +21,23 @@ public class Account {
         this.dateCreated = dateCreated;
     }
 
-    // Monthly Interest Rate TODO: Not used by the program
+    // Transfer from one account to another
+    public void toAccount(Account accountOfSender, Account accountOfReceiver, double amountToTransfer) {
+        System.out.println(BLUE + "Sender's account balance before withdrawal: " + accountOfSender.getBalance());
+        accountOfSender.withdraw(2500);
+        System.out.println("");
+        System.out.println("Receiver's account balance before withdrawal: " + accountOfSender.getBalance());
+        accountOfReceiver.deposit(2500);
+    }
+
+    // Monthly Interest Rate
     public double getMonthlyInterestRate(int monthlyInterestRate) {
         return annualInterestRate / 12;
     }
 
     // Monthly Interest Amount
     public double getMonthlyInterest() {
-        double monthlyInterest = ((balance * annualInterestRate / 1200) / 1000) * 1000.0;
+        double monthlyInterest = ((balance * annualInterestRate / 1200) / 100) * 100.0;
         return monthlyInterest;
     }
 
@@ -48,7 +58,7 @@ public class Account {
     public String toString() {
         return "Balance: " + balance
                 + "\nMonthly interest: " + getMonthlyInterest()
-                + "\nAccount Created In: " + dateCreated.toString();
+                + "\nAccount Created In: " + dateCreated;
     }
 
     // Getters and Setters
