@@ -3,7 +3,7 @@ package com.programming_II_CSC202.Assignments.AssignmentOne;
 import java.util.Date;
 
 public class Account {
-    private int balance = 0;
+    private double balance = 0;
     private double annualInterestRate;
     private Date dateCreated;
 
@@ -31,7 +31,7 @@ public class Account {
     }
 
     // Monthly Interest Rate
-    public double getMonthlyInterestRate(int monthlyInterestRate) {
+    public double getMonthlyInterestRate() {
         return annualInterestRate / 12;
     }
 
@@ -62,11 +62,11 @@ public class Account {
     }
 
     // Getters and Setters
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

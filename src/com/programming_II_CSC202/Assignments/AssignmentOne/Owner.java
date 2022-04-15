@@ -6,8 +6,6 @@ public final class Owner {
     private String name;
     private String address;
 
-
-
     public Owner(int id, String name, String address) {
         this.id = id;
         this.name = name;
