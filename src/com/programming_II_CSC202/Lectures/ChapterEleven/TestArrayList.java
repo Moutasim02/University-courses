@@ -1,11 +1,11 @@
 package com.programming_II_CSC202.Lectures.ChapterEleven;
+
 import java.util.ArrayList;
 
 public class TestArrayList {
     public static void main(String[] args) {
         // Create a list to store cities
         ArrayList<String> cityList = new ArrayList<>();
-
 
 
         // Add some cities in the list
@@ -25,8 +25,8 @@ public class TestArrayList {
         cityList.add("Dubai");
         // contains [London, Denver, Paris, Miami, Seoul, Tokyo,Dubai]
 
-        for ( int i = 0; i<cityList.size(); i++) {
-            System.out.print(cityList.get(i) +" ");
+        for (int i = 0; i < cityList.size(); i++) {
+            System.out.print(cityList.get(i) + " ");
 
         }
         System.out.println();
@@ -37,10 +37,10 @@ public class TestArrayList {
 	    System.out.println(cityList.lastIndexOf("Dubai"));
 	    cityList.remove(cityList.lastIndexOf("Dubai"));
 */
-        cityList.add(2,"Cairo");
+        cityList.add(2, "Cairo");
         System.out.println(cityList);
 
-        cityList.add(0,"Abu Dhabi");
+        cityList.add(0, "Abu Dhabi");
         System.out.println(cityList);
 
         System.out.println("List size? " + cityList.size());
@@ -90,7 +90,7 @@ public class TestArrayList {
 
         list.get(0).setRadius(6);
 
-        for ( int i = 0 ; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getArea());
         }
 

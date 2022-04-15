@@ -10,9 +10,9 @@ public class TestFruit {
         Object f5 = new Apple();
 
 
-        if ( f5 instanceof Apple)
+        if (f5 instanceof Apple)
             System.out.println("it is Apple");
-        else if ( f5 instanceof Orange)
+        else if (f5 instanceof Orange)
             System.out.println("it is Orange");
         else
             System.out.println("it is Fruit");

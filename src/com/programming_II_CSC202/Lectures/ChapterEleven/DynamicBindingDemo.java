@@ -8,12 +8,12 @@ public class DynamicBindingDemo {
         Object o = new Object();
 
 
-        Person1 s3 =  s;  //implicit casting - you don't need to write it ( done for you )
+        Person1 s3 = s;  //implicit casting - you don't need to write it ( done for you )
         Student g2 = (Student) g;
-        Student s2 = (Student)s;      //explicit casting - you have to write the casting
+        Student s2 = (Student) s;      //explicit casting - you have to write the casting
         GraduateStudent g3 = (GraduateStudent) g2;
 
-        if ( s2 instanceof Student)
+        if (s2 instanceof Student)
             System.out.println("YES");
         else
             System.out.println("NO");
@@ -24,8 +24,6 @@ public class DynamicBindingDemo {
         System.out.println(o);
     }
 }
-
-
 
 
 class GraduateStudent extends Student {
