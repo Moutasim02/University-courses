@@ -18,7 +18,7 @@ public class CarTest {
         System.out.println(car3.toString() + "\n");
         System.out.println(car1.getColor());
 
-        //Task 8  - 1080415
+        // Task 8  - 1080415
         int x = 10;
         System.out.println("before calling the method x is " + x);
         x = modifyX(x);
