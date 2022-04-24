@@ -13,7 +13,8 @@ public class StringBufferPractice {
 //        sbf.setCharAt(2,'d');
 //        sbf.reverse();
 //        sbf.setLength(4); // 4 is exclusive
+
         System.out.println(sbf.capacity()); // Already written characters + 16 =24, else it will be 16 only
-        System.out.println(sbf);
+        System.out.println(sbf.charAt(sbf.length() - 1));
     }
 }

@@ -53,4 +53,7 @@ public class Rectangle extends GeometricObject {
                 + "\nThe area is " + getArea());
     }
 
+    public String getPerimeter() {
+        return "method idk where it came from";
+    }
 }

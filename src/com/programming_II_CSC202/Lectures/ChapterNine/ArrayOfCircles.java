@@ -13,7 +13,7 @@ public class ArrayOfCircles {
         System.out.println("number of circles " +circleArray.length);
 
         for ( int i = 0 ; i<circleArray.length; i++) {
-            System.out.print("Please enter radius for object number " +(i+1) +" :");
+            System.out.print("Please enter radius for object number " + (i+1) +" :");
 
 
 //			circleArray[i] = new Circle(Math.random()*100);
