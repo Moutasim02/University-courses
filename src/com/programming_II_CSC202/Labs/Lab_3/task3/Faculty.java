@@ -1,6 +1,6 @@
-package com.programming_II_CSC202.Labs.Lab3.task3;
+package com.programming_II_CSC202.Labs.Lab_3.task3;
 
-import com.programming_II_CSC202.Labs.Lab3.task2.Employee;
+import com.programming_II_CSC202.Labs.Lab_3.task2.Employee;
 
 public class Faculty extends Employee {
     public Faculty() {

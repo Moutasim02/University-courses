@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Labs.Lab5;
+package com.programming_II_CSC202.Labs.Lab_5;
 // Moutasim El Ayoubi - 1080415
 
 public class Mac extends Laptop {

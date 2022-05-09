@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Labs.Lab3.task4;
+package com.programming_II_CSC202.Labs.Lab_3.task4;
 
 public class test {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Labs.Lab3.task2;
+package com.programming_II_CSC202.Labs.Lab_3.task2;
 
 // Moutasim El Ayoubi 1080415
 public class Employee {
