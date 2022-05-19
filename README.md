@@ -7,3 +7,4 @@ Repo containing all notes and exercises I did in ADU programming courses
 - I wrote full summary for chapter 1 - 5 in SWE201 course - current course(Readme.md files).
 - For web design (csc307), as per instructions, none of the submitted labs, assignments, and the project got publicly published.
  
+ Disclaimer: Any code written here is for showcase senarios and not ment in any illegal activity.
