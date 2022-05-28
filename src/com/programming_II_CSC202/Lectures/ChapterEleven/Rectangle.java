@@ -5,7 +5,7 @@ public class Rectangle extends GeometricObject {
     private double width;
 
     public Rectangle() {
-        super();
+
         System.out.println("Creating a Rectangle object using default constructor");
     }
 

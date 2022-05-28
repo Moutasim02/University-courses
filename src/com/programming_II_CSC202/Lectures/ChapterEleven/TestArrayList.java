@@ -7,7 +7,6 @@ public class TestArrayList {
         // Create a list to store cities
         ArrayList<String> cityList = new ArrayList<>();
 
-
         // Add some cities in the list
         cityList.add("London");
         // cityList now contains [London]
@@ -21,7 +20,6 @@ public class TestArrayList {
         // contains [London, Denver, Paris, Miami, Seoul]
         cityList.add("Tokyo");
         // contains [London, Denver, Paris, Miami, Seoul, Tokyo]
-
         cityList.add("Dubai");
         // contains [London, Denver, Paris, Miami, Seoul, Tokyo,Dubai]
 
@@ -29,7 +27,7 @@ public class TestArrayList {
             System.out.print(cityList.get(i) + " ");
 
         }
-        System.out.println();
+        System.out.println("\n");
         System.out.println(cityList);
 /*
 	    cityList.set(0, "Dubai");

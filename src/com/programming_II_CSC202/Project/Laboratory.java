@@ -1,6 +1,6 @@
 package com.programming_II_CSC202.Project;
 
-public class Laboratory {
+public abstract class Laboratory extends Patient implements Mapping {
     private int sbp;
     private int dbp;
     private double fbs;
@@ -10,7 +10,10 @@ public class Laboratory {
     private double tg;
     private double hba1c;
 
-    public Laboratory(int sbp, int dbp, double fbs, double chol, double hdl, double idl, double tg, double hba1c) {
+    public Laboratory() {}
+
+    public Laboratory(int sbp, int dbp, double fbs, double chol, double hdl,
+                      double idl, double tg, double hba1c) {
         this.sbp = sbp;
         this.dbp = dbp;
         this.fbs = fbs;
@@ -19,9 +22,6 @@ public class Laboratory {
         this.idl = idl;
         this.tg = tg;
         this.hba1c = hba1c;
-    }
-
-    public Laboratory() {
     }
 
     public int getSbp() {

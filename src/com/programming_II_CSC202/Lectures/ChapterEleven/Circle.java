@@ -4,7 +4,6 @@ public class Circle extends GeometricObject {
     private double radius;
 
     public Circle() {
-
         System.out.println("Creating a Circle object");
     }
 

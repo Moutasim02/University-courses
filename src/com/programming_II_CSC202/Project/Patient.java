@@ -7,6 +7,9 @@ public class Patient {
     private double height;
     private double weight;
 
+    public Patient() {
+    }
+
     public Patient(int pid, int age, double gender, double height, double weight) {
         this.pid = pid;
         this.age = age;
@@ -14,6 +17,7 @@ public class Patient {
         this.height = height;
         this.weight = weight;
     }
+
 
     public int getPid() {
         return pid;
@@ -55,4 +59,7 @@ public class Patient {
         this.weight = weight;
     }
 
+    public double getBMI() {
+        return weight / Math.pow((height * 0.01),2);
+    }
 }
