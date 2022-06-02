@@ -1,7 +1,7 @@
 package com.programming_II_CSC202.Project;
 
 public interface Mapping {
-    double mapBMI(); //to map the calculated BMI ( via getBMI() method ) in to a mapping values
+    double mapBMI(double bmi); //to map the calculated BMI ( via getBMI() method ) in to a mapping values
     int mapBloodPressure(); // maps the sbp and dbp
     int mapFBS(double fbs); // map fbs attribute
     int mapCholesterol(double chol); // to convert the chol attribute

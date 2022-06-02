@@ -6,20 +6,20 @@ public abstract class Laboratory extends Patient implements Mapping {
     private double fbs;
     private double chol;
     private double hdl;
-    private double idl;
+    private double ldl;
     private double tg;
     private double hba1c;
 
     public Laboratory() {}
 
     public Laboratory(int sbp, int dbp, double fbs, double chol, double hdl,
-                      double idl, double tg, double hba1c) {
+                      double ldl, double tg, double hba1c) {
         this.sbp = sbp;
         this.dbp = dbp;
         this.fbs = fbs;
         this.chol = chol;
         this.hdl = hdl;
-        this.idl = idl;
+        this.ldl = ldl;
         this.tg = tg;
         this.hba1c = hba1c;
     }
@@ -64,12 +64,12 @@ public abstract class Laboratory extends Patient implements Mapping {
         this.hdl = hdl;
     }
 
-    public double getIdl() {
-        return idl;
+    public double getLdl() {
+        return ldl;
     }
 
-    public void setIdl(double idl) {
-        this.idl = idl;
+    public void setLdl(double ldl) {
+        this.ldl = ldl;
     }
 
     public double getTg() {
