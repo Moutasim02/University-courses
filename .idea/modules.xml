@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/com/programming_II_CSC202/Assignments/AssignmentTwo/SimpleCalculator/SimpleCalculator.iml" filepath="$PROJECT_DIR$/src/com/programming_II_CSC202/Assignments/AssignmentTwo/SimpleCalculator/SimpleCalculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/University-Courses.iml" filepath="$PROJECT_DIR$/University-Courses.iml" />
     </modules>
   </component>

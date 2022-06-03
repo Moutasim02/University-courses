@@ -17,7 +17,6 @@ public class Test {
             Scanner input = new Scanner(new File(filePath));
             FileWriter converted = new FileWriter("convertedMedicalRecords.txt");
 
-
             while (input.hasNext()) {
                 if (input.hasNextInt()) {
                     stringArrayList.add(String.valueOf(input.nextInt()));
@@ -27,50 +26,78 @@ public class Test {
                     input.next();
                 }
             }
-//            System.out.println(stringArrayList);
+            System.out.println(stringArrayList);
 //            System.out.println(Integer.parseInt(stringArrayList.get(0)));
 
+            // pid age gender weight height sbp dbp fbs chol ldl hdl tg hba1c
 
             for (int i = 0; i < stringArrayList.size(); i++) {
-//                patient.setAge(Integer.parseInt(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.convertGender(patient.getAge());
-//
-//                patient.setWeight(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                patient.setHeight(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.mapBMI(patient.getBMI());
 
-//                medicalMapper.setSbp(Integer.parseInt(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.setDbp(Integer.parseInt(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.mapBloodPressure();
-//                System.out.println(stringArrayList.get(i));
-                medicalMapper.mapFBS(Double.parseDouble(stringArrayList.get(i)));
-//
-//                System.out.println(medicalMapper);
-//                medicalMapper.mapCholesterol(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.mapLDL(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.mapHDL(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.getTG(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
-//                medicalMapper.mapHB1AC(Double.parseDouble(stringArrayList.get(i)));
-//                i++;
+                converted.write(stringArrayList.get(i)); // Pid
+                converted.write(" ");
+                i++;
+
+                converted.write(stringArrayList.get(i)); // Age
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setGender(Integer.parseInt(stringArrayList.get(i)));
+                converted.write(medicalMapper.convertGender(medicalMapper.getGender())); // Gender
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setWeight(Double.parseDouble(stringArrayList.get(i)));// Weight
+                i++;
+                medicalMapper.setHeight(Double.parseDouble(stringArrayList.get(i)));// Height
+                converted.write(String.valueOf((int) medicalMapper.mapBMI(medicalMapper.getBMI()))); //BMI
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setSbp(Integer.parseInt(stringArrayList.get(i))); // Sbp
+                i++;
+                medicalMapper.setDbp(Integer.parseInt(stringArrayList.get(i))); // Dbp
+                converted.write(String.valueOf(medicalMapper.mapBloodPressure())); // mapBloodPressure
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setFbs(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.mapFBS(medicalMapper.getFbs()))); // FBS
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setChol(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.mapCholesterol(medicalMapper.getChol()))); // Cholestrol
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setLdl(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.mapLDL(medicalMapper.getLdl()))); // LDL
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setHdl(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.mapHDL(medicalMapper.getHdl()))); // HDL
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setTg(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.getTG(medicalMapper.getTg()))); // TG
+                converted.write(" ");
+                i++;
+
+                medicalMapper.setHba1c(Double.parseDouble(stringArrayList.get(i)));
+                converted.write(String.valueOf(medicalMapper.mapHB1AC(medicalMapper.getHba1c()))); // HB1AC
+                converted.write(" ");
+
+                converted.write(String.valueOf(medicalMapper.getTotal()));
+                converted.write("\n");
             }
+            converted.close();
 
-            System.out.println(medicalMapper.toString());
+//            System.out.println(medicalMapper.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void fileRead(ArrayList<Patient> patients) {
-
     }
 }

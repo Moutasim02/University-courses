@@ -3,14 +3,14 @@ package com.programming_II_CSC202.Project;
 public class Patient {
     private int pid;
     private int age;
-    private double gender;
+    private int gender;
     private double height;
     private double weight;
 
     public Patient() {
     }
 
-    public Patient(int pid, int age, double gender, double height, double weight) {
+    public Patient(int pid, int age, int gender, double height, double weight) {
         this.pid = pid;
         this.age = age;
         this.gender = gender;
@@ -27,19 +27,19 @@ public class Patient {
         this.pid = pid;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public void setAge(int age) {
         this.age = age;
     }
 
-    public double getGender() {
+    public int getAge() {
+        return age;
+    }
+
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(double gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -60,6 +60,6 @@ public class Patient {
     }
 
     public double getBMI() {
-        return weight / Math.pow((height * 0.01),2);
+        return (int) (weight / Math.pow((height * 0.01),2) * 100) / 100.0;
     }
 }

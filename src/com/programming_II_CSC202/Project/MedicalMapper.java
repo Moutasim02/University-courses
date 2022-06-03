@@ -10,61 +10,62 @@ public class MedicalMapper extends Laboratory implements Comparable<MedicalMappe
     private char mapGender;
 
     MedicalMapper(){}
-    public int getMapFBS() {
-        return mapFBS;
-    }
 
-    public void setMapFBS(int mapFBS) {
-        this.mapFBS = mapFBS;
-    }
-
-    public int getMapCholestrol() {
-        return mapCholestrol;
-    }
-
-    public void setMapCholestrol(int mapCholestrol) {
-        this.mapCholestrol = mapCholestrol;
-    }
-
-    public int getMapHDL() {
-        return mapHDL;
-    }
-
-    public void setMapHDL(int mapHDL) {
-        this.mapHDL = mapHDL;
-    }
-
-    public int getMapLDL() {
-        return mapLDL;
-    }
-
-    public void setMapLDL(int mapLDL) {
-        this.mapLDL = mapLDL;
-    }
-
-    public int getMapTG() {
-        return mapTG;
-    }
-
-    public void setMapTG(int mapTG) {
-        this.mapTG = mapTG;
-    }
-
-    public int getMapHB1AC() {
-        return mapHB1AC;
-    }
-
-    public void setMapHB1AC(int mapHB1AC) {
-        this.mapHB1AC = mapHB1AC;
-    }
-
-    public char getMapGender() {
-        return mapGender;
-    }
-
-    public void setMapGender(char mapGender) {
-        this.mapGender = mapGender;
-    }
+//    public int getMapFBS() {
+//        return mapFBS;
+//    }
+//
+//    public void setMapFBS(int mapFBS) {
+//        this.mapFBS = mapFBS;
+//    }
+//
+//    public int getMapCholestrol() {
+//        return mapCholestrol;
+//    }
+//
+//    public void setMapCholestrol(int mapCholestrol) {
+//        this.mapCholestrol = mapCholestrol;
+//    }
+//
+//    public int getMapHDL() {
+//        return mapHDL;
+//    }
+//
+//    public void setMapHDL(int mapHDL) {
+//        this.mapHDL = mapHDL;
+//    }
+//
+//    public int getMapLDL() {
+//        return mapLDL;
+//    }
+//
+//    public void setMapLDL(int mapLDL) {
+//        this.mapLDL = mapLDL;
+//    }
+//
+//    public int getMapTG() {
+//        return mapTG;
+//    }
+//
+//    public void setMapTG(int mapTG) {
+//        this.mapTG = mapTG;
+//    }
+//
+//    public int getMapHB1AC() {
+//        return mapHB1AC;
+//    }
+//
+//    public void setMapHB1AC(int mapHB1AC) {
+//        this.mapHB1AC = mapHB1AC;
+//    }
+//
+//    public char getMapGender() {
+//        return mapGender;
+//    }
+//
+//    public void setMapGender(char mapGender) {
+//        this.mapGender = mapGender;
+//    }
 
     public char convertGender(int gender) {
         if (getGender() == 1)
@@ -202,14 +203,15 @@ public class MedicalMapper extends Laboratory implements Comparable<MedicalMappe
     }
 
     public int getTotal() {
-        return (int) (mapBMI(getBMI())) + mapBloodPressure() + mapFBS +
-                mapCholestrol + mapHDL + mapLDL + mapTG + mapHB1AC;
+        return (mapBloodPressure() + mapFBS +
+                mapCholestrol + mapHDL + mapLDL + mapTG + mapHB1AC + (int) (getBMI()));
     }
 
     @Override
     public String toString() {
         return getPid() + " " + getAge() + " " + convertGender((char) getGender()) + " " + mapBMI(getBMI()) +
-                " " + getSbp() + " " + getDbp() + " " + getFbs() + " " + getChol() + " " +  getLdl() + " " + getHdl() + " " + getTg() + " " + getHba1c();
+                " " + getSbp() + " " + getDbp() + " " + getFbs() + " " + getChol() + " " +  getLdl()
+                + " " + getHdl() + " " + getTg() + " " + getHba1c() + " " + getTotal();
     }
 
     @Override
