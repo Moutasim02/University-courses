@@ -15,7 +15,7 @@ public class Test {
         try { // Methodology: Store in string, split on spaces, covert to int or double,
             // add to the variables directly from the Arraylist.
             Scanner input = new Scanner(new File(filePath));
-            FileWriter converted = new FileWriter("convertedMedicalRecords.txt");
+            FileWriter converted = new FileWriter("/home/moutasim/IdeaProjects/University-courses/src/com/programming_II_CSC202/Project/convertedMedicalRecords.txt");
 
             while (input.hasNext()) {
                 if (input.hasNextInt()) {

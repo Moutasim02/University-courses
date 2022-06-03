@@ -60,6 +60,6 @@ public class Patient {
     }
 
     public double getBMI() {
-        return (int) (weight / Math.pow((height * 0.01),2) * 100) / 100.0;
+        return (int) (weight / Math.pow((height * 0.01),2) * 10) / 10.0;
     }
 }
