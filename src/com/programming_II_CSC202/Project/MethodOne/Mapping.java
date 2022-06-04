@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Project;
+package com.programming_II_CSC202.Project.MethodOne;
 
 public interface Mapping {
     double mapBMI(); //to map the calculated BMI ( via getBMI() method ) in to a mapping values
