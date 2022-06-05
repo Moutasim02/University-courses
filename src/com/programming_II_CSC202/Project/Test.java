@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        String convertedPath = "/home/moutasim/IdeaProjects/University-courses/src/com/programming_II_CSC202/Project/";
+//        String convertedPath = "/home/moutasim/IdeaProjects/University-courses/src/com/programming_II_CSC202/Project/";
         try {
-            File medicalRecords = new File(convertedPath + "medicalRecords.txt");
-            BufferedWriter convertedMedicalRecords = new BufferedWriter(new FileWriter(convertedPath + "convertedMedicalRecords.txt"));
+            File medicalRecords = new File(/*convertedPath + */"medicalRecords.txt");
+            BufferedWriter convertedMedicalRecords = new BufferedWriter(new FileWriter(/*convertedPath+*/ "convertMedicalRecords.txt"));
             Scanner input = new Scanner(medicalRecords);
             ArrayList<MedicalMapper> arrayList = new ArrayList<>();
             MedicalMapper objectToMap = null;
@@ -47,7 +47,7 @@ public class Test {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Successfully Generated All The Records, Enter by pressing -> " + convertedPath + "convertedMedicalRecords.txt");
+        System.out.println("Successfully Generated All The Records, Enter by pressing -> " + /*convertedPath +*/ "convertedMedicalRecords.txt");
     }
 }
 

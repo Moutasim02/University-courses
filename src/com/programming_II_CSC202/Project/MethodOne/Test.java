@@ -1,4 +1,3 @@
-//package com.programming_II_CSC202.MethodOne;
 //
 //import java.io.File;
 //import java.io.FileWriter;

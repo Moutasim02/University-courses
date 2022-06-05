@@ -1,6 +1,6 @@
 package com.programming_II_CSC202.Project;
 
-public abstract class Laboratory extends Patient implements Mapping {
+public abstract class Laboratory extends Patient implements Mapping{
     private int sbp;
     private int dbp;
     private double fbs;
