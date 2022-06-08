@@ -6,7 +6,6 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
 
     MedicalMapper() {
     }
-
     public char convertGender(int gender) {
         if (getGender() == 1)
             return 'M';
@@ -27,7 +26,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (getBMI() >= 30 && getBMI() <= 100) {
             return 3;
         }
-        return -1;
+        return 0;
     }
 
 
@@ -35,7 +34,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
     public int mapBloodPressure() {
         if (getSbp() < 130 && getDbp() < 80) {
             return 1;
-        } else if (getSbp() <= 80 && getDbp() <= 130) {
+        } else if (getSbp() <= 130 && getDbp() >= 80) {
             return 2;
         } else if (getSbp() > 130 && getDbp() < 100) {
             return 3;
@@ -60,7 +59,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (fbs >= 301 && fbs <= 400) {
             return 5;
         }
-        return -1;
+        return 0;
     }
 
     @Override
@@ -76,14 +75,14 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (getChol() >= 250 && getChol() <= 500) {
             return 5;
         }
-        return -2;
+        return 0;
     }
 
     @Override
     public int mapHDL(double hdl) {
         if (getHdl() >= 0 && getHdl() <= 39) {
             return 5;
-        } else if (getHdl() >= 40 && getHdl() <= 59) {
+        } else if (getHdl() >= 40 && getHdl() <=59) {
             return 4;
         } else if (getHdl() >= 60 && getHdl() <= 74) {
             return 3;
@@ -92,7 +91,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (getHdl() >= 100 && getHdl() <= 200) {
             return 1;
         }
-        return -1;
+        return 0;
     }
 
     @Override
@@ -108,7 +107,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (getLdl() >= 190 && getLdl() <= 500) {
             return 5;
         }
-        return -1;
+        return 0;
     }
 
     @Override
@@ -124,7 +123,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (tg >= 500 && tg <= 1000) {
             return 5;
         }
-        return -1;
+        return 0;
     }
 
     @Override
@@ -140,7 +139,7 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
         } else if (getHba1c() >= 9.1 && getHba1c() <= 20) {
             return 5;
         }
-        return -1;
+        return 0;
     }
 
     public int getTotal() {
@@ -149,7 +148,8 @@ public class MedicalMapper extends Laboratory implements Mapping, Comparable<Med
 
     @Override
     public String toString() {
-        return getPid() + " " + getAge() + " " + convertGender(getGender()) + " " + (int) (mapBMI()) + " " + mapBloodPressure() + " " + mapFBS(getFbs()) + " " + mapCholesterol(getChol()) + " " + mapLDL(getLdl()) + " " + mapHDL(getHdl()) + " " + getTG(getTg()) + " " + mapHB1AC(getHba1c()) + " " + getTotal();
+        return getPid() + " " + getAge() + " " + convertGender(getGender()) + " " + (int) (mapBMI()) + " " + mapBloodPressure() +
+                " " + mapFBS(getFbs()) + " " + mapCholesterol(getChol()) + " " + mapLDL(getLdl()) + " " + mapHDL(getHdl()) + " " + getTG(getTg()) + " " + mapHB1AC(getHba1c()) + " " + getTotal();
     }
 
     @Override

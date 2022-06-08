@@ -12,18 +12,6 @@ public abstract class Laboratory extends Patient implements Mapping{
 
     public Laboratory() {}
 
-    public Laboratory(int sbp, int dbp, double fbs, double chol, double hdl,
-                      double ldl, double tg, double hba1c) {
-        this.sbp = sbp;
-        this.dbp = dbp;
-        this.fbs = fbs;
-        this.chol = chol;
-        this.hdl = hdl;
-        this.ldl = ldl;
-        this.tg = tg;
-        this.hba1c = hba1c;
-    }
-
     public int getSbp() {
         return sbp;
     }

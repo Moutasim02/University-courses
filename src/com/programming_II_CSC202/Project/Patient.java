@@ -10,15 +10,6 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int pid, int age, int gender, double height, double weight) {
-        this.pid = pid;
-        this.age = age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-    }
-
-
     public int getPid() {
         return pid;
     }
@@ -63,3 +54,4 @@ public class Patient {
         return (int) (weight / Math.pow((height * 0.01),2) * 10) / 10.0;
     }
 }
+
