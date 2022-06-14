@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Lectures.LectureThirteen;
+package com.programming_II_CSC202.Lectures.ChapterThirteen;
 
 public  class mySimpleClass implements Myinterface {
 
@@ -6,7 +6,5 @@ public  class mySimpleClass implements Myinterface {
     public String getName() {
         return "Hello";
     }
-
-
 
 }

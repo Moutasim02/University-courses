@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Lectures.LectureThirteen;
+package com.programming_II_CSC202.Lectures.ChapterThirteen;
 
 public  abstract class GeometricObject {
     private String color = "white";

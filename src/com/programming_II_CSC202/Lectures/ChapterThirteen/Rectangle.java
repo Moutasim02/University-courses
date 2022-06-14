@@ -1,4 +1,4 @@
-package com.programming_II_CSC202.Lectures.LectureThirteen;
+package com.programming_II_CSC202.Lectures.ChapterThirteen;
 
 public class Rectangle extends  GeometricObject {
     private double width;
