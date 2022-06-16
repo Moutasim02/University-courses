@@ -34,7 +34,6 @@ public class Test {
             objectToMap.setHdl(input.nextDouble());
             objectToMap.setTg(input.nextDouble());
             objectToMap.setHba1c(input.nextDouble());
-
         } while (input.hasNextLine());
 
         Collections.sort(arrayList);
