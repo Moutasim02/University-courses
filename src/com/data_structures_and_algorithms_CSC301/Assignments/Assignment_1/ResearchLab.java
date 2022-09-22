@@ -12,7 +12,7 @@ public class ResearchLab {
 
 
     public ResearchLab() {
-
+        
     }
 
     public ResearchLab(String category, String location, int size) {
@@ -20,7 +20,7 @@ public class ResearchLab {
         this.location = location;
         this.size = size;
         researchLabObject = new ResearchLab();
-        researchLabObject.setSize(size);
+        researchLabObject.setLabSize(size);
         researchLabObject.setLocation(location);
         researchLabObject.setCategory(category);
         ResearchLab.researchLabsList.add(counter, researchLabObject);
@@ -51,11 +51,12 @@ public class ResearchLab {
         this.location = location;
     }
 
-    public int getSize() {
-        return size;
+    public int getLabSize() {
+        return labSize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setLabSize(int labSize) {
+        this.labSize = labSize;
     }
+
 }
