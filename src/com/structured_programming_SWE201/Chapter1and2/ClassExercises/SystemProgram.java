@@ -2,18 +2,17 @@
 package com.structured_programming_SWE201.Chapter1and2.ClassExercises;
 
 
+import java.util.Scanner;
+
 public class SystemProgram {
     public static void main(String[] args) {
-        //1. declare variables.
-        int age;
-        // initialize variable
-        age = 19;
-        double cost = 23.56;
-        //print
-        System.out.println("Khaled's age is : " + age);
-        System.out.println("The cost is " + cost);
-
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("first number: ");
+        int x = scanner.nextInt();
+        System.out.println("second number: ");
+        int y = scanner.nextInt();
+        int var = x + y;
+        System.out.println(var);
     }
 
 }

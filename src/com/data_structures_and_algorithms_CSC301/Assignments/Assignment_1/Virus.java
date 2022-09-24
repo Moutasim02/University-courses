@@ -1,6 +1,6 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 
-public class Virus extends ResearchLab /*implements VirusSpecs*/{
+public class Virus extends ResearchLab {
     private boolean isDeadly;
     private String virusName;
     private String virusShape;
@@ -9,7 +9,6 @@ public class Virus extends ResearchLab /*implements VirusSpecs*/{
     private String virusDiscoveryDate;
 
     public Virus() {
-
     }
 
     public Virus(boolean isDeadly, String virusName, String virusShape, String virusDiameter, String virusDiscoveredBy, String virusDiscoveryDate) {

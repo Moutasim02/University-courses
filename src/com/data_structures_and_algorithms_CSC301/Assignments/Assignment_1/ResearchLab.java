@@ -3,22 +3,21 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 import java.util.ArrayList;
 
 public class ResearchLab {
-    private String category;
-    private String location;
-    private int size;
+    private String labCategory;
+    private String labLocation;
+    private int labSize;
     private static ResearchLab researchLabObject;
     static ArrayList<ResearchLab> researchLabsList = new ArrayList<>();
     private static int counter;
 
 
     public ResearchLab() {
-        
     }
 
     public ResearchLab(String category, String location, int size) {
-        this.category = category;
-        this.location = location;
-        this.size = size;
+        this.labCategory = category;
+        this.labLocation = location;
+        this.labSize = size;
         researchLabObject = new ResearchLab();
         researchLabObject.setLabSize(size);
         researchLabObject.setLocation(location);
@@ -36,19 +35,19 @@ public class ResearchLab {
     }
 
     public String getCategory() {
-        return category;
+        return labCategory;
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        this.labCategory = category;
     }
 
     public String getLocation() {
-        return location;
+        return labLocation;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.labLocation = location;
     }
 
     public int getLabSize() {
