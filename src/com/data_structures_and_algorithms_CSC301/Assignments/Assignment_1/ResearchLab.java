@@ -2,11 +2,10 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 
 import java.util.ArrayList;
 
-public class ResearchLab {
+public class ResearchLab implements ResearchLabInterface{
     private String labCategory;
     private String labLocation;
     private int labSize;
-    private static ResearchLab researchLabObject;
     private static ArrayList<ResearchLab> researchLabsList = new ArrayList<>();
     private static int counter;
 
@@ -18,19 +17,27 @@ public class ResearchLab {
         this.labCategory = category;
         this.labLocation = location;
         this.labSize = size;
-        researchLabObject = new ResearchLab();
+        ResearchLab researchLabObject = new ResearchLab();
         researchLabObject.setLabSize(size);
         researchLabObject.setLocation(location);
         researchLabObject.setCategory(category);
         ResearchLab.researchLabsList.add(counter, researchLabObject);
         counter++;
+        //[researchLab, Arraylist<Viruses>]
     }
+
+/*    @Override
+    public void listAll() {
+        for (int i = 0; i < ResearchLab.getResearchLabsList().size(); i++) {
+            System.out.println(i + "- " + ResearchLab.getResearchLabsList().get(i));
+        }
+    }*/
 
     @Override
     public String toString() {
-        return "labCategory='" + labCategory + '\'' +
-                ", labLocation='" + labLocation + '\'' +
-                ", labSize=" + labSize;
+        return "labCategory: " + labCategory +
+                ", labLocation:" + labLocation +
+                ", labSize: " + labSize;
     }
 
     public static ArrayList<ResearchLab> getResearchLabsList() {
@@ -64,5 +71,4 @@ public class ResearchLab {
     public void setLabSize(int labSize) {
         this.labSize = labSize;
     }
-
 }

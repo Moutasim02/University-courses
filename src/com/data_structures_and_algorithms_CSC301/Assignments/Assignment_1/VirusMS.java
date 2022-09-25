@@ -73,8 +73,7 @@ public class VirusMS {
             System.out.println(i + "- " + ResearchLab.getResearchLabsList().get(i));
         }
         System.out.println("Which Lab you want to add to: ");
-        labChoice = sc.nextInt();
-        ResearchLab lab = ResearchLab.getResearchLabsList().get(labChoice);
+        labChoice = Integer.parseInt(sc.nextLine());
 
         System.out.println("""
                 -------------------
@@ -82,24 +81,38 @@ public class VirusMS {
                 -------------------
                 """);
         System.out.print("Virus Name: ");
-        String virusName = sc.next();
+        String virusName = sc.nextLine();
         System.out.print("Symptoms: ");
         String symptoms = sc.nextLine();
-        System.out.println("Body Sample: ");
-        String bodySample = sc.next();
-        System.out.print("Diameter: ");
-        String virusDiameter = sc.next();
+        System.out.print("Body Sample: ");
+        String bodySample = sc.nextLine();
         System.out.print("System Effect: ");
         String bodySystemEffect = sc.nextLine();
         System.out.print("Discovered by: ");
         String virusDiscoveredBy = sc.nextLine();
         System.out.print("Discovery year: ");
-        String virusDiscoveryYear = sc.nextLine();
-        new Virus(lab, virusName, symptoms, bodySample, virusDiameter, bodySystemEffect, virusDiscoveredBy,
+        int virusDiscoveryYear = Integer.parseInt(sc.nextLine());
+        new Virus(labChoice, virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy,
                 virusDiscoveryYear);
+        for (Virus vi : VirusAbstractClass.getViruses()) {
+            System.out.println(vi);
+        }
     }
+// List all research Labs storing a particular virus
 
     public static void ListAllResearchLabs() {
+
+//        if (VirusAbstractClass.getViruses().get()) {
+//            System.out.println();
+//        }
+
+     /*   Scanner sc = new Scanner(System.in);
+        System.out.print("Which virus you want to show its research lab instances? Type the right name: ");
+        String virusName = sc.nextLine();
+
+        for (int i = 0; i < ResearchLab.getResearchLabsList().size(); i++) {
+            if ()
+        }*/
     }
 
     public static void DeleteAllViruses() {

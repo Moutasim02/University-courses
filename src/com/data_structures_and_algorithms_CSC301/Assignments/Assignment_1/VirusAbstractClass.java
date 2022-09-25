@@ -3,48 +3,70 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 import java.util.ArrayList;
 
 public abstract class VirusAbstractClass {
+    private static ResearchLab lab;
     private static int counter;
     private static ArrayList<Virus> viruses = new ArrayList<>();
-    private Virus virus;
     private String virusName;
     private String symptoms;
     private String bodySample;
-    private String virusDiameter;
     private String bodySystemEffect;
     private String virusDiscoveredBy;
-    private String virusDiscoveryYear;
+    private int virusDiscoveryYear;
 
     public VirusAbstractClass() {
     }
 
-    public VirusAbstractClass(String virusName, String symptoms, String bodySample, String virusDiameter,
-                              String bodySystemEffect, String virusDiscoveredBy, String virusDiscoveryYear) {
+    public VirusAbstractClass (int labIndex, String virusName, String symptoms, String bodySample, String bodySystemEffect, String virusDiscoveredBy, int virusDiscoveryYear) {
         this.virusName = virusName;
         this.symptoms = symptoms;
         this.bodySample = bodySample;
-        this.virusDiameter = virusDiameter;
         this.bodySystemEffect = bodySystemEffect;
         this.virusDiscoveredBy = virusDiscoveredBy;
         this.virusDiscoveryYear = virusDiscoveryYear;
-        this.virus = new Virus();
+        Virus virus = new Virus();
         virus.setVirusName(virusName);
         virus.setSymptoms(symptoms);
         virus.setBodySample(bodySample);
-        virus.setVirusDiameter(virusDiameter);
         virus.setBodySystemEffect(bodySystemEffect);
         virus.setVirusDiscoveredBy(virusDiscoveredBy);
         virus.setVirusDiscoveryYear(virusDiscoveryYear);
         VirusAbstractClass.viruses.add(counter, virus);
+        addVirusToRL(VirusAbstractClass.viruses.get(counter));
         counter++;
     }
 
+    @Override
+    public String toString() {
+        return "VirusAbstractClass{" +
+                "Lab: " + Virus.getLab() +
+                ", virusName='" + virusName + '\'' +
+                ", symptoms='" + symptoms + '\'' +
+                ", bodySample='" + bodySample + '\'' +
+                ", bodySystemEffect='" + bodySystemEffect + '\'' +
+                ", virusDiscoveredBy='" + virusDiscoveredBy + '\'' +
+                ", virusDiscoveryYear=" + virusDiscoveryYear +
+                '}';
+    }
+
+    private void addVirusToRL(Virus virus) {
+
+    }
+
     abstract boolean search4Virus(String virusName);
+
+    public static ResearchLab getLab() {
+        return lab;
+    }
+
+    public static void setLab(ResearchLab lab) {
+        VirusAbstractClass.lab = lab;
+    }
 
     public static void setViruses(ArrayList<Virus> viruses) {
         VirusAbstractClass.viruses = viruses;
     }
 
-    public ArrayList<Virus> getViruses() {
+    public static ArrayList<Virus> getViruses() {
         return viruses;
     }
 
@@ -72,14 +94,6 @@ public abstract class VirusAbstractClass {
         this.bodySample = bodySample;
     }
 
-    public String getVirusDiameter() {
-        return virusDiameter;
-    }
-
-    public void setVirusDiameter(String virusDiameter) {
-        this.virusDiameter = virusDiameter;
-    }
-
     public String getBodySystemEffect() {
         return bodySystemEffect;
     }
@@ -96,11 +110,11 @@ public abstract class VirusAbstractClass {
         this.virusDiscoveredBy = virusDiscoveredBy;
     }
 
-    public String getVirusDiscoveryYear() {
+    public int getVirusDiscoveryYear() {
         return virusDiscoveryYear;
     }
 
-    public void setVirusDiscoveryYear(String virusDiscoveryYear) {
+    public void setVirusDiscoveryYear(int virusDiscoveryYear) {
         this.virusDiscoveryYear = virusDiscoveryYear;
     }
 }
