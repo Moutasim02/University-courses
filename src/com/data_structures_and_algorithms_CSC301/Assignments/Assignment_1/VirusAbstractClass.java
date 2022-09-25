@@ -38,6 +38,8 @@ public abstract class VirusAbstractClass {
         counter++;
     }
 
+    abstract boolean search4Virus(String virusName);
+
     public static void setViruses(ArrayList<Virus> viruses) {
         VirusAbstractClass.viruses = viruses;
     }
@@ -45,8 +47,6 @@ public abstract class VirusAbstractClass {
     public ArrayList<Virus> getViruses() {
         return viruses;
     }
-
-    abstract boolean search4Virus(String virusName);
 
     public String getVirusName() {
         return virusName;

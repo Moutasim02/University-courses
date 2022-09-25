@@ -67,27 +67,35 @@ public class VirusMS {
     }
 
     public static void AddVirusToLab() {
+        int labChoice;
         Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < ResearchLab.getResearchLabsList().size(); i++) {
+            System.out.println(i + "- " + ResearchLab.getResearchLabsList().get(i));
+        }
+        System.out.println("Which Lab you want to add to: ");
+        labChoice = sc.nextInt();
+        ResearchLab lab = ResearchLab.getResearchLabsList().get(labChoice);
+
         System.out.println("""
                 -------------------
                    Virus Details
                 -------------------
                 """);
         System.out.print("Virus Name: ");
-        String virusName = sc.nextLine();
+        String virusName = sc.next();
         System.out.print("Symptoms: ");
         String symptoms = sc.nextLine();
-        System.out.print("Body Sample: ");
-        String bodySample = sc.nextLine();
-        System.out.println("Diameter: ");
-        String virusDiameter = sc.nextLine();
-        System.out.println("System Effect: ");
+        System.out.println("Body Sample: ");
+        String bodySample = sc.next();
+        System.out.print("Diameter: ");
+        String virusDiameter = sc.next();
+        System.out.print("System Effect: ");
         String bodySystemEffect = sc.nextLine();
-        System.out.println("Discovered by: ");
+        System.out.print("Discovered by: ");
         String virusDiscoveredBy = sc.nextLine();
-        System.out.println("Discovery year: ");
+        System.out.print("Discovery year: ");
         String virusDiscoveryYear = sc.nextLine();
-        new Virus(virusName, symptoms, bodySample, virusDiameter, bodySystemEffect, virusDiscoveredBy,
+        new Virus(lab, virusName, symptoms, bodySample, virusDiameter, bodySystemEffect, virusDiscoveredBy,
                 virusDiscoveryYear);
     }
 

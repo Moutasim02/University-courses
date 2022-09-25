@@ -26,6 +26,12 @@ public class ResearchLab {
         counter++;
     }
 
+    @Override
+    public String toString() {
+        return "labCategory='" + labCategory + '\'' +
+                ", labLocation='" + labLocation + '\'' +
+                ", labSize=" + labSize;
+    }
 
     public static ArrayList<ResearchLab> getResearchLabsList() {
         return researchLabsList;
