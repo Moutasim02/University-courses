@@ -7,7 +7,7 @@ public class ResearchLab {
     private String labLocation;
     private int labSize;
     private static ResearchLab researchLabObject;
-    static ArrayList<ResearchLab> researchLabsList = new ArrayList<>();
+    private static ArrayList<ResearchLab> researchLabsList = new ArrayList<>();
     private static int counter;
 
 
@@ -25,6 +25,7 @@ public class ResearchLab {
         ResearchLab.researchLabsList.add(counter, researchLabObject);
         counter++;
     }
+
 
     public static ArrayList<ResearchLab> getResearchLabsList() {
         return researchLabsList;

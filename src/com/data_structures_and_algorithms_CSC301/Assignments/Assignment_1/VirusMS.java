@@ -1,6 +1,5 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class VirusMS {
@@ -40,7 +39,7 @@ public class VirusMS {
         System.out.println("1- Create a new Research Lab");
         System.out.println("2- Add a new Virus to a research Lab");
         System.out.println("3- List all research Labs storing a particular virus");
-        System.out.println("4- Delete all existing viruses from a given a category in a research Lab");
+        System.out.println("4- Delete all existing viruses from a given category in a research Lab");
         System.out.println("5- Check if a particular virus exists based on its official name");
         System.out.println("0- Quit");
         System.out.println("---------------------------------------------------------");
@@ -72,7 +71,6 @@ public class VirusMS {
     }
 
     public static void ListAllResearchLabs() {
-
     }
 
     public static void DeleteAllViruses() {
