@@ -3,7 +3,6 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 import java.util.ArrayList;
 
 public abstract class VirusAbstractClass {
-    private static ResearchLab lab;
     private static int counter;
     private static ArrayList<Virus> viruses = new ArrayList<>();
     private String virusName;
@@ -16,7 +15,7 @@ public abstract class VirusAbstractClass {
     public VirusAbstractClass() {
     }
 
-    public VirusAbstractClass (int labIndex, String virusName, String symptoms, String bodySample, String bodySystemEffect, String virusDiscoveredBy, int virusDiscoveryYear) {
+    public VirusAbstractClass(int labIndex, String virusName, String symptoms, String bodySample, String bodySystemEffect, String virusDiscoveredBy, int virusDiscoveryYear) {
         this.virusName = virusName;
         this.symptoms = symptoms;
         this.bodySample = bodySample;
@@ -31,15 +30,14 @@ public abstract class VirusAbstractClass {
         virus.setVirusDiscoveredBy(virusDiscoveredBy);
         virus.setVirusDiscoveryYear(virusDiscoveryYear);
         VirusAbstractClass.viruses.add(counter, virus);
-        addVirusToRL(VirusAbstractClass.viruses.get(counter));
+        addVirusToRL(VirusAbstractClass.viruses.get(counter), labIndex);
         counter++;
     }
 
     @Override
     public String toString() {
         return "VirusAbstractClass{" +
-                "Lab: " + Virus.getLab() +
-                ", virusName='" + virusName + '\'' +
+                "  virusName='" + virusName + '\'' +
                 ", symptoms='" + symptoms + '\'' +
                 ", bodySample='" + bodySample + '\'' +
                 ", bodySystemEffect='" + bodySystemEffect + '\'' +
@@ -48,19 +46,11 @@ public abstract class VirusAbstractClass {
                 '}';
     }
 
-    private void addVirusToRL(Virus virus) {
+    private void addVirusToRL(Virus virus, int labIndex) {
 
     }
 
     abstract boolean search4Virus(String virusName);
-
-    public static ResearchLab getLab() {
-        return lab;
-    }
-
-    public static void setLab(ResearchLab lab) {
-        VirusAbstractClass.lab = lab;
-    }
 
     public static void setViruses(ArrayList<Virus> viruses) {
         VirusAbstractClass.viruses = viruses;

@@ -2,7 +2,7 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 
 import java.util.ArrayList;
 
-public class ResearchLab implements ResearchLabInterface{
+public class ResearchLab implements ResearchLabInterface {
     private String labCategory;
     private String labLocation;
     private int labSize;
@@ -23,7 +23,6 @@ public class ResearchLab implements ResearchLabInterface{
         researchLabObject.setCategory(category);
         ResearchLab.researchLabsList.add(counter, researchLabObject);
         counter++;
-        //[researchLab, Arraylist<Viruses>]
     }
 
 /*    @Override

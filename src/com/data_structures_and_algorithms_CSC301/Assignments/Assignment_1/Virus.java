@@ -6,7 +6,7 @@ public class Virus extends VirusAbstractClass {
     public Virus() {
     }
 
-    public Virus(int labIndex,  String virusName, String symptoms, String bodySample, String bodySystemEffect, String virusDiscoveredBy, int virusDiscoveryYear) {
+    public Virus(int labIndex, String virusName, String symptoms, String bodySample, String bodySystemEffect, String virusDiscoveredBy, int virusDiscoveryYear) {
         super(labIndex, virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear);
     }
 
