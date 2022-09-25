@@ -67,7 +67,28 @@ public class VirusMS {
     }
 
     public static void AddVirusToLab() {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("""
+                -------------------
+                   Virus Details
+                -------------------
+                """);
+        System.out.print("Virus Name: ");
+        String virusName = sc.nextLine();
+        System.out.print("Symptoms: ");
+        String symptoms = sc.nextLine();
+        System.out.print("Body Sample: ");
+        String bodySample = sc.nextLine();
+        System.out.println("Diameter: ");
+        String virusDiameter = sc.nextLine();
+        System.out.println("System Effect: ");
+        String bodySystemEffect = sc.nextLine();
+        System.out.println("Discovered by: ");
+        String virusDiscoveredBy = sc.nextLine();
+        System.out.println("Discovery year: ");
+        String virusDiscoveryYear = sc.nextLine();
+        new Virus(virusName, symptoms, bodySample, virusDiameter, bodySystemEffect, virusDiscoveredBy,
+                virusDiscoveryYear);
     }
 
     public static void ListAllResearchLabs() {
