@@ -6,61 +6,42 @@ public class ResearchLab implements ResearchLabInterface {
     private String labCategory;
     private String labLocation;
     private int labSize;
-    private static ArrayList<ResearchLab> researchLabsList = new ArrayList<>();
-    private static int counter;
-
+    // composition between ResearchLab and Virus because a ResearchLab has a Virus
+    ArrayList<Virus> viruses = new ArrayList<>();
 
     public ResearchLab() {
     }
 
-    public ResearchLab(String category, String location, int size) {
-        this.labCategory = category;
-        this.labLocation = location;
-        this.labSize = size;
-        ResearchLab researchLabObject = new ResearchLab();
-        researchLabObject.setLabSize(size);
-        researchLabObject.setLocation(location);
-        researchLabObject.setCategory(category);
-        ResearchLab.researchLabsList.add(counter, researchLabObject);
-        counter++;
+    public ResearchLab(String labCategory, String labLocation, int labSize) {
+        this.labCategory = labCategory;
+        this.labLocation = labLocation;
+        this.labSize = labSize;
     }
 
-/*    @Override
-    public void listAll() {
-        for (int i = 0; i < ResearchLab.getResearchLabsList().size(); i++) {
-            System.out.println(i + "- " + ResearchLab.getResearchLabsList().get(i));
-        }
-    }*/
 
     @Override
     public String toString() {
-        return "labCategory: " + labCategory +
-                ", labLocation:" + labLocation +
-                ", labSize: " + labSize;
+        return "ResearchLab{" +
+                "labCategory='" + labCategory + '\'' +
+                ", labLocation='" + labLocation + '\'' +
+                ", labSize=" + labSize +
+                '}';
     }
 
-    public static ArrayList<ResearchLab> getResearchLabsList() {
-        return researchLabsList;
-    }
-
-    public static void setResearchLabsList(ArrayList<ResearchLab> researchLabsList) {
-        ResearchLab.researchLabsList = researchLabsList;
-    }
-
-    public String getCategory() {
+    public String getLabCategory() {
         return labCategory;
     }
 
-    public void setCategory(String category) {
-        this.labCategory = category;
+    public void setLabCategory(String labCategory) {
+        this.labCategory = labCategory;
     }
 
-    public String getLocation() {
+    public String getLabLocation() {
         return labLocation;
     }
 
-    public void setLocation(String location) {
-        this.labLocation = location;
+    public void setLabLocation(String labLocation) {
+        this.labLocation = labLocation;
     }
 
     public int getLabSize() {
@@ -69,5 +50,27 @@ public class ResearchLab implements ResearchLabInterface {
 
     public void setLabSize(int labSize) {
         this.labSize = labSize;
+    }
+
+    @Override
+    public void deleteAllViruses(String userCategory) {
+        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
+            if (userCategory.equals(VirusMS.researchLabs.get(i).getLabCategory())) {
+                VirusMS.researchLabs.get(i).viruses.clear();
+            }
+        }
+    }
+
+    @Override
+    public void search4Virus(String userVirusName) {
+        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
+            for (int j = 0; j < VirusMS.researchLabs.get(i).viruses.size(); j++) {
+                if (userVirusName.equals(VirusMS.researchLabs.get(i).viruses.get(j).getVirusName())) {
+                    System.out.println("Virus found!");
+                    return;
+                }
+            }
+        }
+        System.out.println("Virus not found!");
     }
 }
