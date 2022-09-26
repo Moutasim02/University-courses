@@ -18,6 +18,27 @@ public class ResearchLab implements ResearchLabInterface {
         this.labSize = labSize;
     }
 
+    @Override
+    public void deleteAllViruses(String userCategory) {
+        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
+            if (userCategory.equals(VirusMS.researchLabs.get(i).getLabCategory())) {
+                VirusMS.researchLabs.get(i).viruses.clear();
+            }
+        }
+    }
+
+    @Override
+    public void search4Virus(String userVirusName) {
+        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
+            for (int j = 0; j < VirusMS.researchLabs.get(i).viruses.size(); j++) {
+                if (userVirusName.equals(VirusMS.researchLabs.get(i).viruses.get(j).getVirusName())) {
+                    System.out.println("Virus found!");
+                    return;
+                }
+            }
+        }
+        System.out.println("Virus not found!");
+    }
 
     @Override
     public String toString() {
@@ -50,27 +71,5 @@ public class ResearchLab implements ResearchLabInterface {
 
     public void setLabSize(int labSize) {
         this.labSize = labSize;
-    }
-
-    @Override
-    public void deleteAllViruses(String userCategory) {
-        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
-            if (userCategory.equals(VirusMS.researchLabs.get(i).getLabCategory())) {
-                VirusMS.researchLabs.get(i).viruses.clear();
-            }
-        }
-    }
-
-    @Override
-    public void search4Virus(String userVirusName) {
-        for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
-            for (int j = 0; j < VirusMS.researchLabs.get(i).viruses.size(); j++) {
-                if (userVirusName.equals(VirusMS.researchLabs.get(i).viruses.get(j).getVirusName())) {
-                    System.out.println("Virus found!");
-                    return;
-                }
-            }
-        }
-        System.out.println("Virus not found!");
     }
 }
