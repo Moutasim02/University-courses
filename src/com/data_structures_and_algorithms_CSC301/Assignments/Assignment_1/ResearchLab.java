@@ -5,21 +5,20 @@ import java.util.ArrayList;
 public class ResearchLab implements ResearchLabInterface {
     private String labCategory;
     private String labLocation;
-    private int labSize;
-    // composition between ResearchLab and Virus because a ResearchLab has a Virus
-    ArrayList<Virus> viruses = new ArrayList<>();
+    private String labSize; // Lab size is string because we want to make the user specify his SI unit.
+    ArrayList<Virus> viruses = new ArrayList<>(); // ResearchLab has a Virus
 
     public ResearchLab() {
     }
 
-    public ResearchLab(String labCategory, String labLocation, int labSize) {
+    public ResearchLab(String labCategory, String labLocation, String labSize) {
         this.labCategory = labCategory;
         this.labLocation = labLocation;
         this.labSize = labSize;
     }
 
     @Override
-    public void deleteAllViruses(String userCategory) {
+    public void deleteInstancesOfViruses(String userCategory) {
         for (int i = 0; i < VirusMS.researchLabs.size(); i++) {
             if (userCategory.equals(VirusMS.researchLabs.get(i).getLabCategory())) {
                 VirusMS.researchLabs.get(i).viruses.clear();
@@ -65,11 +64,11 @@ public class ResearchLab implements ResearchLabInterface {
         this.labLocation = labLocation;
     }
 
-    public int getLabSize() {
+    public String getLabSize() {
         return labSize;
     }
 
-    public void setLabSize(int labSize) {
+    public void setLabSize(String labSize) {
         this.labSize = labSize;
     }
 }

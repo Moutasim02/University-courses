@@ -1,18 +1,10 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1;
 
 import com.data_structures_and_algorithms_CSC301.Assignments.Assignment_1.classifications.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VirusMS {
-    // Colors
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_RESET = "\u001B[0m";
-
-
     static ArrayList<ResearchLab> researchLabs = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -24,30 +16,30 @@ public class VirusMS {
             switch (userChoice) {
                 case 1:
                     addResearchLab();
-                    break;        // 1-	Create a new Research Lab
+                    break;
                 case 2:
                     for (int i = 0; i < researchLabs.size(); i++) {
                         System.out.println(i + "- " + researchLabs.get(i));
                     }
-                    System.out.println("Which Lab you want to add to: ");
+                    System.out.print("Which research lab do you want to add the virus to: ");
                     int labChoice = Integer.parseInt(input.nextLine());
                     addVirusToLab(labChoice);
-                    break;            // 2-	Add a new Virus to research Lab
+                    break;
                 case 3:
                     System.out.print("Which virus you want to list all its lab instances? \n> ");
                     String userVirusName = String.valueOf(input.nextLine());
                     listAllResearchLabs(userVirusName);
-                    break;    // 3-	List all research Labs storing a particular virus
+                    break;
                 case 4:
                     System.out.print("Which category you want to delete all viruses? \n> ");
                     String userCategory = String.valueOf(input.nextLine());
                     deleteAllViruses(userCategory);
-                    break;        // 4-	Delete all existing viruses from a given a category in research Lab
+                    break;
                 case 5:
                     System.out.print("Which virus you want to search for? \n> ");
                     String usVName = String.valueOf(input.nextLine());
                     search4Virus(usVName);
-                    break;            // 5-	Check if a particular virus exists based on its official name
+                    break;
 
                 default:
                     System.out.println("Thank you for using CSC301's Virus Management System, Good Bye.");
@@ -56,23 +48,25 @@ public class VirusMS {
     }
 
     public static void displayMenu() {
-        System.out.println(ANSI_BLUE + "---------------------------------------------------------");
-        System.out.println("Virus Management System {CSC301, Fall2022}");
-        System.out.println("---------------------------------------------------------" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "1- Create a new Research Lab");
+        System.out.println(Constants.ANSI_BLUE + "---------------------------------------------------------");
+        System.out.print("""
+                𝕍𝕚𝕣𝕦𝕤 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥 𝕊𝕪𝕤𝕥𝕖𝕞 𝕗𝕠𝕣 {ℂ𝕊ℂ𝟛𝟘𝟙, 𝔽𝕒𝕝𝕝𝟚𝟘𝟚𝟚}
+                 """);
+        System.out.println("---------------------------------------------------------" + Constants.ANSI_RESET);
+        System.out.println(Constants.ANSI_GREEN + "1- Create a new Research Lab");
         System.out.println("2- Add a new Virus to a research Lab");
         System.out.println("3- List all research Labs storing a particular virus");
         System.out.println("4- Delete all existing viruses from a given category in a research Lab");
         System.out.println("5- Check if a particular virus exists based on its official name");
         System.out.println("0- Quit");
-        System.out.println("---------------------------------------------------------" + ANSI_RESET);
+        System.out.println("---------------------------------------------------------" + Constants.ANSI_RESET);
     }
 
     public static int userMenuChoice() {
         Scanner userChoice = new Scanner(System.in);
         int choice;
         do {
-            System.out.println(ANSI_BLUE + "Your choice (0, 1, 2, 3, 4, 5):" + ANSI_RESET);
+            System.out.println(Constants.ANSI_BLUE + "Your choice (0, 1, 2, 3, 4, 5):" + Constants.ANSI_RESET);
             choice = userChoice.nextInt();
         } while (choice > 5);
         return choice;
@@ -92,11 +86,11 @@ public class VirusMS {
     public static void addVirusToLab(int labChoice) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println(ANSI_RED + """
-                --------------------------
-                      Virus Details
-                --------------------------
-                """ + ANSI_RESET);
+        System.out.println(Constants.ANSI_RED + """
+                ---------------------------
+                        𝕍𝕚𝕣𝕦𝕤 𝔻𝕖𝕥𝕒𝕚𝕝𝕤
+                ---------------------------
+                """ + Constants.ANSI_RESET);
         System.out.print("Virus Name: ");
         String virusName = sc.nextLine();
         System.out.print("Symptoms: ");
@@ -110,43 +104,45 @@ public class VirusMS {
         System.out.print("Discovery year: ");
         int virusDiscoveryYear = Integer.parseInt(sc.nextLine());
 
-        System.out.print(ANSI_RED + """
+        System.out.print(Constants.ANSI_RED + """
                 ---------------------------
-                 What type of virus is it?
+                   𝕎𝕙𝕒𝕥 𝕥𝕪𝕡𝕖 𝕠𝕗 𝕧𝕚𝕣𝕦𝕤 𝕚𝕤 𝕚𝕥?
                 ---------------------------
                 """);
-        System.out.print(ANSI_GREEN + """
+        System.out.print(Constants.ANSI_GREEN + """
                      1- dsDNA
                      2- dsRNA
                      3- ssDNA
                      4- ssRNA
                      5- dsDNA-RT: Reverse Transcriptase
                      6- ssRNA-RT: Reverse Transcriptase
-                """ + ANSI_RESET);
+                """ + Constants.ANSI_RESET);
         System.out.print("> ");
 
         int classification;
         do {
             classification = sc.nextInt();
-        } while (classification < 0);
+        } while (classification < 0 || classification > 6);
 
-        if (classification == 1) {
+        /*
+         * 1- get from the researchLab arraylist the index that user specified
+         * 2- access the viruses arraylist from researchlab class and add the new object of this classification
+         */
+        if (classification == 1)
             researchLabs.get(labChoice).viruses.add(new DsDNA(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        } else if (classification == 2) {
-            researchLabs.get(labChoice).viruses.add(new DsRNA(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        } else if (classification == 3) {
+        else if (classification == 3)
             researchLabs.get(labChoice).viruses.add(new SsDNA(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        } else if (classification == 4) {
+        else if (classification == 4)
             researchLabs.get(labChoice).viruses.add(new SsRNA(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        } else if (classification == 5) {
+        else if (classification == 5)
             researchLabs.get(labChoice).viruses.add(new DsDNA_RT(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        } else if (classification == 6) {
+        else if (classification == 6)
             researchLabs.get(labChoice).viruses.add(new SsRNA_RT(virusName, symptoms, bodySample, bodySystemEffect, virusDiscoveredBy, virusDiscoveryYear));
-        }
     }
 
     public static void listAllResearchLabs(String userVirusName) {
         for (int i = 0; i < researchLabs.size(); i++) {
+            // loop through the whole viruses list to identify if the VirusName exist in this particular lab
             for (int j = 0; j < researchLabs.get(i).viruses.size(); j++) {
                 if (userVirusName.equals(researchLabs.get(i).viruses.get(j).getVirusName())) {
                     System.out.println(researchLabs.get(i));
@@ -157,7 +153,7 @@ public class VirusMS {
 
     public static void deleteAllViruses(String userCategory) {
         ResearchLab rl = new ResearchLab();
-        rl.deleteAllViruses(userCategory);
+        rl.deleteInstancesOfViruses(userCategory);
         System.out.println("Done deleting all viruses in " + userCategory + " category");
     }
 
