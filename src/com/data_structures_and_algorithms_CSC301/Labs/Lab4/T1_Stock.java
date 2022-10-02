@@ -35,12 +35,28 @@ public class T1_Stock implements Comparable<T1_Stock> {
 
     }
 
+    public int getTradeCount15() {
+        return TradeCount15;
+    }
+
     public String toStringFull() {
         return ADJClose15 + "\t" + Change15 + "\t" + Close15 + "\t" + CompanyName15 + "\t" +
                 Date15 + "\t" + High15 + "\t" + ID15 + "\t" +
                 LastTradePrice15 + "\t" + Low15 + "\t" + Open15 + "\t" + PercentageChange15 +
                 "\t" + PreviousClose15 + "\t" + Sector15 + "\t" +
                 Symbol15 + "\t" + TradeCount15 + "\t" + Value15 + "\t" + Volume15;
+    }
+
+    public String getSymbol15() {
+        return Symbol15;
+    }
+
+    public String getCompanyName15() {
+        return CompanyName15;
+    }
+
+    public void setSymbol15(String symbol15) {
+        Symbol15 = symbol15;
     }
 
     @Override

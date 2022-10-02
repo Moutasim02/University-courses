@@ -1,9 +1,6 @@
 package com.data_structures_and_algorithms_CSC301.Labs.Lab4;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class T3_TestArrayList {
     public static void main(String[] args) {
@@ -42,11 +39,22 @@ public class T3_TestArrayList {
         System.out.println("            : MAX ADJClose price = " + Collections.max(shADIB));
         System.out.println("            : MIN ADJClose price = " + Collections.min(shADIB));
 
-/*        // T4
+        // T4
         System.out.println("Practice1: Create a new list containing all companies' Symbol:");
         //Practice1 code:  To implement it.
-        ArrayList<String> allSymbols1080415 = new ArrayList<>();
-       */
+        ArrayList<String> allSymbols_1080415 = new ArrayList<>();
+        for (T1_Stock t1_stock : stocksHistory0415) {
+            if (!allSymbols_1080415.contains(t1_stock.getSymbol15())) {
+                allSymbols_1080415.add(t1_stock.getSymbol15());
+            }
+        }
+        // T5
+        ArrayList<String> allLarger40_1080415 = new ArrayList<>();
+        for (T1_Stock t1_stock : stocksHistory0415) {
+            if (t1_stock.getTradeCount15() >= 40) {
+                allLarger40_1080415.add(t1_stock.getCompanyName15());
+            }
+        }
     }
 
     public static void readData(String fileName, ArrayList<T1_Stock> stocksHistory)
