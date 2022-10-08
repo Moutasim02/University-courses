@@ -19,11 +19,11 @@ public class ReplaceHalfV1 {
                 counter++;
             }
         }
-        int half = counter / 2;
-        for (int i = 0; half > 0; i++) {
+        counter = counter / 2;
+        for (int i = 0; counter > 0; i++) {
             if (myArray[i] == oldValue) {
                 myArray[i] = newValue;
-                half--;
+                counter--;
             }
         }
     }
