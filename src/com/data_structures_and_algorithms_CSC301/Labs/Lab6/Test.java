@@ -1,4 +1,4 @@
-package com.data_structures_and_algorithms_CSC301.Labs.lab6;
+package com.data_structures_and_algorithms_CSC301.Labs.Lab6;
 
 import java.util.ArrayList;
 public class Test {

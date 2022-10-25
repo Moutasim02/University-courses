@@ -1,9 +1,9 @@
-package com.data_structures_and_algorithms_CSC301.random;
-
+package com.data_structures_and_algorithms_CSC301.Lectures.Chapter_2.Algorithms;
+// My version
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FindingMaxTen {
+public class FindingMaxTenV1 {
     public static void main(String... args) {
         ArrayList<Integer> arr = new ArrayList<>();
         arr.addAll(Arrays.asList(100, 20, 50, 2, 7, 25, 10, 60, 75, 105, 200, 1));
