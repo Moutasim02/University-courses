@@ -51,10 +51,12 @@ public class Test {
                 if (c == 45) { // -
                     result = result - (firstNumber - secondNumber);
                 } else if (c == 47) { // /
-                    result = firstNumber / secondNumber;
+                    result = result + firstNumber / secondNumber;
                 } else if (c == 43) { // +
                     result = result + firstNumber + secondNumber;
-                } else if (c == 42) { // *
+                } else if (c == 42 && result != 0) { // *
+                    result = result * firstNumber * secondNumber;
+                } else {
                     result = firstNumber * secondNumber;
                 }
 

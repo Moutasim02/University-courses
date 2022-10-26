@@ -5,7 +5,5 @@ public class Testing {
         int f1 = 2;
         int f2 = 2;
         char c1 = '-'; // 45
-
-
     }
 }

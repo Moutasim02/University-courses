@@ -1,18 +1,28 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_2;
 
-public class Task implements Comparable<Task>{
-    private String taskText;
+public class Task extends abstractTask implements Comparable<Task> {
+    private String taskName;
     private String taskCreationDate;
     private boolean taskIsPrioritized;
     private String taskStatus;
     private int taskResult;
 
-    public Task(String taskText, String taskCreationDate, boolean taskIsPrioritized, String taskStatus, int taskResult) {
-        this.taskText = taskText;
+    public Task(String taskName, String taskCreationDate, boolean taskIsPrioritized, String taskStatus, int taskResult) {
+        this.taskName = taskName;
         this.taskCreationDate = taskCreationDate;
         this.taskIsPrioritized = taskIsPrioritized;
         this.taskStatus = taskStatus;
         this.taskResult = taskResult;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskText='" + taskName + '\'' +
+                ", taskCreationDate='" + taskCreationDate + '\'' +
+                ", taskIsPrioritized=" + taskIsPrioritized +
+                ", taskStatus='" + taskStatus + '\'' +
+                '}';
     }
 
     public int getTaskResult() {
@@ -23,22 +33,12 @@ public class Task implements Comparable<Task>{
         this.taskResult = taskResult;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "taskText='" + taskText + '\'' +
-                ", taskCreationDate='" + taskCreationDate + '\'' +
-                ", taskIsPrioritized=" + taskIsPrioritized +
-                ", taskStatus='" + taskStatus + '\'' +
-                '}';
+    public String getTaskName() {
+        return taskName;
     }
 
-    public String getTaskText() {
-        return taskText;
-    }
-
-    public void setTaskText(String taskText) {
-        this.taskText = taskText;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     public String getTaskCreationDate() {
