@@ -8,6 +8,7 @@ public class VirusMS {
     static ArrayList<ResearchLab> researchLabs = new ArrayList<>();
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
         int userChoice;
         do {

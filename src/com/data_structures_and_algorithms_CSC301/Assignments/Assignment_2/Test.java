@@ -1,10 +1,6 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_2;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Stack;
-
-import static java.lang.String.valueOf;
+import java.util.*;
 
 public class Test {
     static Scanner scanner = new Scanner(System.in);
@@ -20,22 +16,16 @@ public class Test {
                 createTask();
             } else if (userChoice == 2) {
                 runTasks();
-            } else if (userChoice == 3) {
-                raiseTaskPriority();
-            } else if (userChoice == 4) {
-                LowerTaskPriority();
-            } else if (userChoice == 5) {
-                displayTasks();
-            } else if (userChoice == 6) {
-                cancelTask();
-
-                returnLastCancelledTask();
-
-                System.out.println("Thank you for using the Task Management System");
-            } else if (userChoice == 7) {
-                returnLastCancelledTask();
-
-                System.out.println("Thank you for using the Task Management System");
+//            } else if (userChoice == 3) {
+//                raiseTaskPriority();
+//            } else if (userChoice == 4) {
+//                LowerTaskPriority();
+//            } else if (userChoice == 5) {
+//                displayTasks();
+//            } else if (userChoice == 6) {
+//                cancelTask();
+//            } else if (userChoice == 7) {
+//                returnLastCancelledTask();
             } else {
                 System.out.println("Thank you for using the Task Management System");
             }
@@ -43,7 +33,7 @@ public class Test {
     }
 
     private static void displayMenu() {
-        System.out.println("""
+        System.out.print("""
                 \n--------------------------------------------------------------------
                                        Task Management System
                 --------------------------------------------------------------------
@@ -69,157 +59,83 @@ public class Test {
     }
 
     private static void createTask() {
-        // ask which robot, if not available ask for creating new one
-        int robotIndex = robotProcess();
+        // Ask which robot, if not available ask for creating new one
+        int robotIndex = Robot.robotCreationProcess(robots);
 
+        // Get details
         System.out.print("Enter Task Name: ");
         String taskName = scanner.next();
-        System.out.print("Enter Creation Date:");
-        String taskCreationDate = scanner.next();
-        boolean isPrioritized = checkIfPrioritized();
-        String taskStatus = taskStatus();
-        int taskResult = taskResult(taskName);
+        boolean isPrioritized = AbstractTask.checkIfPrioritized();
 
+        // Create the task
         if (isPrioritized)
-            robots.get(robotIndex).getTasksToHandleInPriority().add(new Task(taskName, taskCreationDate, true, taskStatus, 5));
+            robots.get(robotIndex).getTasksToHandleInPriority().add(new Task(taskName, new Date().getMinutes(), true));
         else
-            robots.get(robotIndex).getTasksToHandleInQueue().add(new Task(taskName, taskCreationDate, false, taskStatus, 23));
+            robots.get(robotIndex).getTasksToHandleInQueue().add(new Task(taskName, new Date().getMinutes(), false));
 
         System.out.println("Task created");
     }
 
     private static void runTasks() {
-        Robot robot = new Robot();
+        System.out.println("Which robot to execute its tasks? ");
+        AbstractRobot.showAllRobots(robots);
+
+        System.out.print("Robot number: ");
+        int robotIndex = scanner.nextInt();
+
         System.out.print("How many tasks to execute? ");
         int tasksToExecute = scanner.nextInt();
-        for (int i = 0; tasksToExecute <= robot.getTasksToHandleInPriority().size(); i++, tasksToExecute--) {
 
-        }
-    }
+        PriorityQueue<Task> copyOfPriorityQueue = new PriorityQueue<>(robots.get(robotIndex).getTasksToHandleInPriority());
+        Queue<Task> copyOfQueue = new LinkedList<>(robots.get(robotIndex).getTasksToHandleInQueue());
 
-    private static int taskResult(String taskName) {
-        int result = 0;
-        String str = "";
-        char[] chars = taskName.toCharArray();
-        ArrayList<Character> characterArrayList = new ArrayList<>();
-        for (char aChar : chars) {
-            characterArrayList.add(aChar);
-        }
-        characterArrayList.add((char) 32);
-        Stack<String> toStoreInteger = new Stack<>();
-        Stack<String> toStoreOperands = new Stack<>();
-        char num = 32;
-
-        // Add the character to the suitable stack
-        for (int i = 0; i < characterArrayList.size(); i++) {
-            if (Character.isDigit(characterArrayList.get(i))) {
-                str = str.concat(valueOf(characterArrayList.get(i)));
-            } else {
-                toStoreInteger.push(str);
-                if (!valueOf(characterArrayList.get(i)).equals(valueOf(num))) {
-                    toStoreOperands.push(valueOf(characterArrayList.get(i)));
-                }
-                str = "";
+        for (int i = 0; i < tasksToExecute; i++) {
+            if (!copyOfPriorityQueue.isEmpty()) {
+                AbstractTask.taskResult(copyOfPriorityQueue.element());
+                System.out.println(copyOfPriorityQueue.poll());
+            } else if (!copyOfQueue.isEmpty()) {
+                AbstractTask.taskResult(copyOfQueue.element());
+                System.out.println(copyOfPriorityQueue.poll());
             }
         }
-        System.out.println(toStoreOperands);
-        System.out.println(toStoreInteger);
-
-        // [+, +, *]
-        // [100, 20, 50, 10]
-        // Find result
-        for (int i = 0; i < toStoreInteger.size(); i++) {
-            for (int j = 0; j < toStoreOperands.size(); j++) {
-                int firstNumber = Integer.parseInt(toStoreInteger.pop());
-                String operand = toStoreOperands.pop();
-                int secondNumber = Integer.parseInt(toStoreInteger.pop());
-                char c = operand.charAt(0);
-
-                if (c == 45) { // -
-                    result = result - (firstNumber - secondNumber);
-                } else if (c == 47) { // /
-                    result = result + firstNumber / secondNumber;
-                } else if (c == 43) { // +
-                    result = result + firstNumber + secondNumber;
-                } else if (c == 42 && result != 0) { // *
-                    result = result * firstNumber * secondNumber;
-                } else {
-                    result = firstNumber * secondNumber;
-                }
-            }
-        }
-        return result;
     }
-
-    // tasks <= in prior
-    // task > prior.size -> execute until reaching prior.size == 0
-    private static void raiseTaskPriority() {
-    }
-
-    private static void LowerTaskPriority() {
-    }
-
-    private static void displayTasks() {
-    }
-
-    private static void returnLastCancelledTask() {
-    }
-
-    private static void cancelTask() {
-    }
-
-
-    // For Creating the task (1)
-    private static int robotProcess() { // returns the index of the robot
-        String robotName;
-        if (robots.isEmpty()) {
-            System.out.println("Please create robot first!");
-            System.out.print("Robot name: ");
-            robotName = scanner.next();
-            robots.add(new Robot(robotName));
-            return robots.size() - 1;
-        } else {
-            System.out.println("Which robot you want to add the task to? ");
-            for (int i = 0; i < robots.size(); i++) {
-                System.out.println(i + " " + robots.get(i));
-            }
-            System.out.print("Robot number: ");
-            return scanner.nextInt();
-        }
-    }
-
-    private static boolean checkIfPrioritized() {
-        System.out.print("""
-                Should we prioritize the task?
-                1- Yes
-                2- No
-                >
-                """);
-        int choice;
-        do {
-            choice = scanner.nextInt();
-            if (choice == 1) {
-                return true;
-            }
-        } while (choice == 1 || choice == 2);
-        return false;
-    }
-
-    private static String taskStatus() {
-        System.out.print("""
-                What is the task status?
-                1- Pending
-                2- Executed
-                >
-                """);
-        int choice;
-        do {
-            choice = scanner.nextInt();
-            if (choice == 1) {
-                return "Pending";
-            } else {
-                return "Executed";
-            }
-        } while (choice == 1 || choice == 2);
-    }
+//
+//    private static void raiseTaskPriority() {
+//        System.out.println("Which robot to higher its tasks priority? ");
+//        AbstractRobot.showAllRobots(robots);
+//
+//        System.out.print("Robot number: ");
+//        int robotIndex = scanner.nextInt();
+//        robots.get(robotIndex).getTasksToHandleInPriority().
+//                addAll(robots.get(robotIndex).getTasksToHandleInQueue());
+//
+//        // Remove all from Queue
+//        for (int i = 0; i < robots.get(robotIndex).getTasksToHandleInQueue().size(); i++) {
+//            robots.get(robotIndex).getTasksToHandleInQueue().poll();
+//        }
+//        System.out.println("Priorities Raised for robot " + robots.get(robotIndex).getRobotName());
+//    }
+//
+//    private static void LowerTaskPriority() {
+//        System.out.println("Please provide the creation minute of the tasks you want to lower their priority:  ");
+//        int highestMinute = scanner.nextInt();
+//
+//        for (int i = 0; i < robots.size(); i++) {
+//            if (robots.get(i).getTasksToHandleInPriority().peek().getTaskCreationMinutes() <= highestMinute) {
+//
+//            }
+//        }
+//    }
+//
+//    private static void displayTasks() {
+//        AbstractTask.priorityDisplay();
+//        AbstractTask.queueDisplay();
+//    }
+//
+//    private static void cancelTask() {
+//
+//    }
+//
+//    private static void returnLastCancelledTask() {
+//    }
 }

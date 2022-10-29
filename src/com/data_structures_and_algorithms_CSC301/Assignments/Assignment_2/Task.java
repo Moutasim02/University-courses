@@ -1,36 +1,30 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_2;
 
-public class Task extends abstractTask implements Comparable<Task> {
+import java.util.Date;
+
+public class Task extends AbstractTask {
     private String taskName;
-    private String taskCreationDate;
+    private int taskCreationMinutes;
     private boolean taskIsPrioritized;
     private String taskStatus;
-    private int taskResult;
 
-    public Task(String taskName, String taskCreationDate, boolean taskIsPrioritized, String taskStatus, int taskResult) {
+
+    public Task(String taskName, int taskCreationMinutes, boolean taskIsPrioritized) {
         this.taskName = taskName;
-        this.taskCreationDate = taskCreationDate;
+        this.taskCreationMinutes = taskCreationMinutes;
         this.taskIsPrioritized = taskIsPrioritized;
-        this.taskStatus = taskStatus;
-        this.taskResult = taskResult;
+        this.taskStatus = "Pending";
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                "taskText='" + taskName + '\'' +
-                ", taskCreationDate='" + taskCreationDate + '\'' +
-                ", taskIsPrioritized=" + taskIsPrioritized +
-                ", taskStatus='" + taskStatus + '\'' +
+                "taskName is:" + taskName + '\'' +
+                "taskCreationHour is:" + taskCreationMinutes +
+                "taskIsPrioritized:" + taskIsPrioritized +
+                "taskStatus is:" + taskStatus + '\'' +
+                "taskResult is:" + taskResult +
                 '}';
-    }
-
-    public int getTaskResult() {
-        return taskResult;
-    }
-
-    public void setTaskResult(int taskResult) {
-        this.taskResult = taskResult;
     }
 
     public String getTaskName() {
@@ -41,12 +35,12 @@ public class Task extends abstractTask implements Comparable<Task> {
         this.taskName = taskName;
     }
 
-    public String getTaskCreationDate() {
-        return taskCreationDate;
+    public int getTaskCreationMinutes() {
+        return taskCreationMinutes;
     }
 
-    public void setTaskCreationDate(String taskCreationDate) {
-        this.taskCreationDate = taskCreationDate;
+    public void setTaskCreationMinutes(int taskCreationMinutes) {
+        this.taskCreationMinutes = taskCreationMinutes;
     }
 
     public boolean isTaskIsPrioritized() {
@@ -65,8 +59,4 @@ public class Task extends abstractTask implements Comparable<Task> {
         this.taskStatus = taskStatus;
     }
 
-    @Override
-    public int compareTo(Task task) {
-        return Math.max(this.taskResult, task.taskResult);
-    }
 }

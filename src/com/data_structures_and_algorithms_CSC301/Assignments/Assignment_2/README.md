@@ -28,7 +28,7 @@ be executed. For example, once running the task "100+20+50*10” it will give th
    specific time making them hence run in FIFO order.
 5. **Display Tasks**: Displays all tasks in the order of their priorities and providing their
    status. Status can be Executed or Pending. For executed tasks, you need to
-   display their results. 
+   display their results.
 6. **Bonus Mark Functions**: If you implement efficiently the bonus mark functions
       you will get 2.5 extra marks.
       a. Cancel a task: cancels a pending task. Can be called multiple times and

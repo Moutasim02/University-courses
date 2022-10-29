@@ -4,16 +4,13 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Robot {
+public class Robot extends AbstractRobot {
     private String robotName;
     private Queue<Task> tasksToHandleInQueue = new LinkedList<>(); //FIFO
-    private PriorityQueue<Task> tasksToHandleInPriority = new PriorityQueue<>();
+    private PriorityQueue<Task> tasksToHandleInPriority = new PriorityQueue<>(); // Higher results first
 
     public Robot(String robotName) {
         this.robotName = robotName;
-    }
-
-    public Robot() {
     }
 
     @Override
@@ -48,4 +45,5 @@ public class Robot {
     public void setTasksToHandleInPriority(PriorityQueue<Task> tasksToHandleInPriority) {
         this.tasksToHandleInPriority = tasksToHandleInPriority;
     }
+
 }
