@@ -9,38 +9,36 @@ public class Task extends AbstractTask {
     private String taskStatus;
 
 
-    public Task(String taskName, int taskCreationMinutes, boolean taskIsPrioritized) {
-        this.taskName = taskName;
-        this.taskCreationMinutes = taskCreationMinutes;
+    public Task(String taskExpression, boolean taskIsPrioritized) {
+        this.taskExpression = taskExpression;
+        this.taskCreationSecond = new Date().getSeconds();
         this.taskIsPrioritized = taskIsPrioritized;
         this.taskStatus = "Pending";
     }
 
+
     @Override
     public String toString() {
-        return "Task{" +
-                "taskName is:" + taskName + '\'' +
-                "taskCreationHour is:" + taskCreationMinutes +
-                "taskIsPrioritized:" + taskIsPrioritized +
-                "taskStatus is:" + taskStatus + '\'' +
-                "taskResult is:" + taskResult +
-                '}';
+        return Constants.ANSI_YELLOW + "\nTask expression is: " + taskExpression +
+                "\nTask creation in seconds: " + taskCreationSecond +
+                "\nIs the task prioritized? " + taskIsPrioritized +
+                "\nTask status is: " + taskStatus + "\n";
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getTaskExpression() {
+        return taskExpression;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setTaskExpression(String taskExpression) {
+        this.taskExpression = taskExpression;
     }
 
-    public int getTaskCreationMinutes() {
-        return taskCreationMinutes;
+    public long getTaskCreationSecond() {
+        return taskCreationSecond;
     }
 
-    public void setTaskCreationMinutes(int taskCreationMinutes) {
-        this.taskCreationMinutes = taskCreationMinutes;
+    public void setTaskCreationSecond(long taskCreationSecond) {
+        this.taskCreationSecond = taskCreationSecond;
     }
 
     public boolean isTaskIsPrioritized() {
@@ -59,4 +57,13 @@ public class Task extends AbstractTask {
         this.taskStatus = taskStatus;
     }
 
+    @Override
+    public int compareTo(Task task) {
+        if (taskResult == task.taskResult)
+            return 0;
+        else if (taskResult > task.taskResult)
+            return 1;
+        else
+            return -1;
+    }
 }

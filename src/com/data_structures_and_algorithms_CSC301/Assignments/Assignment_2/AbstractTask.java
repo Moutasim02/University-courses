@@ -4,20 +4,20 @@ import java.util.*;
 
 import static java.lang.String.valueOf;
 
-public abstract class AbstractTask implements Comparable<Task> {
+public abstract class AbstractTask {
     protected int taskResult;
 
     public AbstractTask() {
 
     }
-// Priorities are not being added to the PriorityQueue in ascending/ descending order.
+
+    // Priorities are not being added to the PriorityQueue in ascending/ descending order.
     protected static boolean checkIfPrioritized() {
-        System.out.print("""
-                Should we prioritize the task?
-                1- Yes
-                2- No
-                >
-                """);
+
+        System.out.println("Should we prioritize the task?");
+        System.out.println("1- Yes");
+        System.out.print("2- No" + "\n> ");
+
         int choice = Test.scanner.nextInt();
         while (choice < 1 || choice > 2) {
             choice = Test.scanner.nextInt();
@@ -29,7 +29,7 @@ public abstract class AbstractTask implements Comparable<Task> {
     protected static void taskResult(Task taskName) {
         int result = 0;
         String str = "";
-        char[] chars = taskName.getTaskName().toCharArray();
+        char[] chars = taskName.getTaskExpression().toCharArray();
         ArrayList<Character> characterArrayList = new ArrayList<>();
         for (char aChar : chars) {
             characterArrayList.add(aChar);
@@ -54,7 +54,6 @@ public abstract class AbstractTask implements Comparable<Task> {
 
         result = getResult(result, toStoreInteger, toStoreOperands);
         taskName.setTaskResult(result);
-        taskName.setTaskStatus("Executed");
     }
 
     private static int getResult(int result, Stack<String> toStoreInteger, Stack<String> toStoreOperands) {
@@ -89,11 +88,15 @@ public abstract class AbstractTask implements Comparable<Task> {
     protected static void queueDisplay() {
         for (int i = 0; i < Test.robots.size(); i++) {
             Queue<Task> taskQueue = new LinkedList<>(Test.robots.get(i).getTasksToHandleInQueue());
-            if (taskQueue.peek() != null) {
-                if (taskQueue.peek().getTaskStatus().equals("Pending")) {
-                    System.out.println("Task result: " + taskQueue.poll());
+            int taskQSize = taskQueue.size();
+            System.out.println(Constants.ANSI_RED + "--------------------------------------------------------------------");
+            System.out.println("Tasks in queue for robot: " + Test.robots.get(i).getRobotName() + Constants.ANSI_RESET);
+            for (int j = 0; j < taskQSize; j++) {
+                if (taskQueue.element().getTaskStatus().equals("Executed")) {
+                    System.out.println(taskQueue.element());
+                    System.out.println("Task result: " + taskQueue.poll().getTaskResult());
                 } else {
-                    taskQueue.poll();
+                    System.out.println(taskQueue.poll());
                 }
             }
         }
@@ -102,11 +105,15 @@ public abstract class AbstractTask implements Comparable<Task> {
     protected static void priorityDisplay() {
         for (int i = 0; i < Test.robots.size(); i++) {
             PriorityQueue<Task> taskPriorityQueue = new PriorityQueue<>(Test.robots.get(i).getTasksToHandleInPriority());
-            if (taskPriorityQueue.peek() != null) {
-                if (taskPriorityQueue.peek().getTaskStatus().equals("Executed")) {
-                    System.out.println("Task result: " + taskPriorityQueue.poll());
+            int taskPQSize = taskPriorityQueue.size();
+            System.out.println(Constants.ANSI_RED + "--------------------------------------------------------------------");
+            System.out.println("Tasks in priority queue for robot: " + Test.robots.get(i).getRobotName() + Constants.ANSI_RESET);
+            for (int j = 0; j < taskPQSize; j++) {
+                if (taskPriorityQueue.element().getTaskStatus().equals("Executed")) {
+                    System.out.println(taskPriorityQueue.element());
+                    System.out.println("Task result: " + taskPriorityQueue.poll().getTaskResult());
                 } else {
-                    taskPriorityQueue.poll();
+                    System.out.println(taskPriorityQueue.poll());
                 }
             }
         }

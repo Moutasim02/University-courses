@@ -7,7 +7,6 @@ public class Test {
     static ArrayList<Robot> robots = new ArrayList<>();
 
     public static void main(String[] args) {
-
         int userChoice;
         do {
             displayMenu();
@@ -16,24 +15,24 @@ public class Test {
                 createTask();
             } else if (userChoice == 2) {
                 runTasks();
-//            } else if (userChoice == 3) {
-//                raiseTaskPriority();
-//            } else if (userChoice == 4) {
-//                LowerTaskPriority();
-//            } else if (userChoice == 5) {
-//                displayTasks();
-//            } else if (userChoice == 6) {
-//                cancelTask();
-//            } else if (userChoice == 7) {
-//                returnLastCancelledTask();
+            } else if (userChoice == 3) {
+                raiseTaskPriority();
+            } else if (userChoice == 4) {
+                LowerTaskPriority();
+            } else if (userChoice == 5) {
+                displayTasks();
+            } else if (userChoice == 6) {
+                cancelTask();
+            } else if (userChoice == 7) {
+                returnLastCancelledTask();
             } else {
-                System.out.println("Thank you for using the Task Management System");
+                System.out.println(Constants.ANSI_RED + "Thank you for using the Task Management System" + Constants.ANSI_RESET);
             }
         } while (userChoice != 0);
     }
 
     private static void displayMenu() {
-        System.out.print("""
+        System.out.print(Constants.ANSI_GREEN + """
                 \n--------------------------------------------------------------------
                                        Task Management System
                 --------------------------------------------------------------------
@@ -42,7 +41,7 @@ public class Test {
                 3- Raise Priority of all tasks assigned to a specific slave robot
                 4- Lower Priority of any task created before a given date
                 5- Display Tasks
-                6- Cancel a pending task (multi-callable)
+                6- Cancel a pending task
                 7- Return last cancelled task
                 0- Quit
                 --------------------------------------------------------------------
@@ -63,7 +62,7 @@ public class Test {
         int robotIndex = Robot.robotCreationProcess(robots);
 
         // Get details
-        System.out.print("Enter Task Name: ");
+        System.out.print(Constants.ANSI_BLUE + "Enter the task expression: ");
         String taskName = scanner.next();
         boolean isPrioritized = AbstractTask.checkIfPrioritized();
 
@@ -77,11 +76,7 @@ public class Test {
     }
 
     private static void runTasks() {
-        System.out.println("Which robot to execute its tasks? ");
-        AbstractRobot.showAllRobots(robots);
-
-        System.out.print("Robot number: ");
-        int robotIndex = scanner.nextInt();
+        int robotIndex = AbstractRobot.chooseRobot();
 
         System.out.print("How many tasks to execute? ");
         int tasksToExecute = scanner.nextInt();
@@ -90,52 +85,102 @@ public class Test {
         Queue<Task> copyOfQueue = new LinkedList<>(robots.get(robotIndex).getTasksToHandleInQueue());
 
         for (int i = 0; i < tasksToExecute; i++) {
-            if (!copyOfPriorityQueue.isEmpty()) {
+            if (!copyOfPriorityQueue.isEmpty() && copyOfPriorityQueue.element().getTaskStatus().equals("Pending")) {
                 AbstractTask.taskResult(copyOfPriorityQueue.element());
+                copyOfPriorityQueue.element().setTaskStatus("Executed");
                 System.out.println(copyOfPriorityQueue.poll());
-            } else if (!copyOfQueue.isEmpty()) {
+            } else if (!copyOfQueue.isEmpty() && copyOfQueue.element().getTaskStatus().equals("Pending")) {
                 AbstractTask.taskResult(copyOfQueue.element());
-                System.out.println(copyOfPriorityQueue.poll());
+                copyOfQueue.element().setTaskStatus("Executed");
+                System.out.println(copyOfQueue.poll());
             }
         }
     }
-//
-//    private static void raiseTaskPriority() {
-//        System.out.println("Which robot to higher its tasks priority? ");
-//        AbstractRobot.showAllRobots(robots);
-//
-//        System.out.print("Robot number: ");
-//        int robotIndex = scanner.nextInt();
-//        robots.get(robotIndex).getTasksToHandleInPriority().
-//                addAll(robots.get(robotIndex).getTasksToHandleInQueue());
-//
-//        // Remove all from Queue
-//        for (int i = 0; i < robots.get(robotIndex).getTasksToHandleInQueue().size(); i++) {
-//            robots.get(robotIndex).getTasksToHandleInQueue().poll();
-//        }
-//        System.out.println("Priorities Raised for robot " + robots.get(robotIndex).getRobotName());
-//    }
-//
-//    private static void LowerTaskPriority() {
-//        System.out.println("Please provide the creation minute of the tasks you want to lower their priority:  ");
-//        int highestMinute = scanner.nextInt();
-//
-//        for (int i = 0; i < robots.size(); i++) {
-//            if (robots.get(i).getTasksToHandleInPriority().peek().getTaskCreationMinutes() <= highestMinute) {
-//
-//            }
-//        }
-//    }
-//
-//    private static void displayTasks() {
-//        AbstractTask.priorityDisplay();
-//        AbstractTask.queueDisplay();
-//    }
-//
-//    private static void cancelTask() {
-//
-//    }
-//
-//    private static void returnLastCancelledTask() {
-//    }
+
+    private static void raiseTaskPriority() {
+        int robotIndex = AbstractRobot.chooseRobot();
+
+        robots.get(robotIndex).getTasksToHandleInPriority().
+                addAll(robots.get(robotIndex).getTasksToHandleInQueue());
+
+        // Remove all from Queue
+        for (int i = 0; i < robots.get(robotIndex).getTasksToHandleInQueue().size(); i++) {
+            robots.get(robotIndex).getTasksToHandleInQueue().element().setTaskIsPrioritized(true);
+            robots.get(robotIndex).getTasksToHandleInQueue().poll();
+        }
+        System.out.println(Constants.ANSI_RED + "All Priorities Raised for robot " + robots.get(robotIndex).getRobotName() + Constants.ANSI_RESET);
+    }
+
+    private static void LowerTaskPriority() {
+        int robotIndex = AbstractRobot.chooseRobot();
+
+        PriorityQueue<Task> copyOfPriorityQueue = new PriorityQueue<>(robots.get(robotIndex).getTasksToHandleInPriority());
+        int priorityQSize = copyOfPriorityQueue.size();
+        robots.get(robotIndex).getTasksToHandleInPriority().clear();
+
+        System.out.println(Constants.ANSI_BLUE + "Please provide the creation second of the tasks that you want to lower their priority: " + Constants.ANSI_RESET);
+        int seconds = scanner.nextInt();
+
+        for (int i = 0; i < priorityQSize; i++) {
+            if (copyOfPriorityQueue.element().getTaskCreationSecond() <= seconds) {
+                copyOfPriorityQueue.element().setTaskIsPrioritized(false);
+                robots.get(robotIndex).getTasksToHandleInQueue().add(copyOfPriorityQueue.poll());
+            } else {
+                robots.get(robotIndex).getTasksToHandleInPriority().add(copyOfPriorityQueue.poll());
+            }
+        }
+    }
+
+    private static void displayTasks() {
+        AbstractTask.priorityDisplay();
+        AbstractTask.queueDisplay();
+    }
+
+    private static void cancelTask() {
+        int robotIndex = AbstractRobot.chooseRobot();
+
+        System.out.println(Constants.ANSI_BLUE + "Which task expression do you want to cancel? " + Constants.ANSI_RESET);
+        String taskExpression = scanner.next();
+
+        Queue<Task> trackingQueue = new LinkedList<>(robots.get(robotIndex).getTasksToHandleInPriority());
+
+        trackingQueue.addAll(robots.get(robotIndex).getTasksToHandleInQueue());
+
+        robots.get(robotIndex).getTasksToHandleInPriority().clear();
+        robots.get(robotIndex).getTasksToHandleInQueue().clear();
+
+        while (!trackingQueue.isEmpty()) {
+            if (trackingQueue.element().getTaskStatus().equals("Pending") && trackingQueue.element().getTaskExpression().equals(taskExpression)) {
+                robots.get(robotIndex).getCancelledTasks().push(trackingQueue.poll());
+            } else {
+                if (trackingQueue.element().isTaskIsPrioritized())
+                    robots.get(robotIndex).getTasksToHandleInPriority().add(trackingQueue.poll());
+                else if (!trackingQueue.element().isTaskIsPrioritized())
+                    robots.get(robotIndex).getTasksToHandleInQueue().add(trackingQueue.poll());
+            }
+        }
+
+        System.out.println(Constants.ANSI_RED + "The cancelled task is: \n"
+                + robots.get(robotIndex).getCancelledTasks() + Constants.ANSI_RESET);
+
+        System.out.println(Constants.ANSI_RED + "Do you want to cancel any more tasks?");
+        System.out.println("1- Yes");
+        System.out.println("2- No" + "\n> " + Constants.ANSI_RESET);
+
+        int userChoice = scanner.nextInt();
+        if (userChoice == 1)
+            cancelTask();
+    }
+
+    private static void returnLastCancelledTask() {
+        int robotIndex = AbstractRobot.chooseRobot();
+        if (robots.get(robotIndex).getCancelledTasks().isEmpty()) {
+            System.out.println(Constants.ANSI_RED + "Cancel Task first" + Constants.ANSI_RESET);
+            return;
+        }
+        if (robots.get(robotIndex).getCancelledTasks().peek().isTaskIsPrioritized())
+            robots.get(robotIndex).getTasksToHandleInPriority().add(robots.get(robotIndex).getCancelledTasks().pop());
+        else if (!robots.get(robotIndex).getCancelledTasks().peek().isTaskIsPrioritized())
+            robots.get(robotIndex).getTasksToHandleInQueue().add(robots.get(robotIndex).getCancelledTasks().pop());
+    }
 }
