@@ -127,14 +127,4 @@ public abstract class AbstractTask {
         this.taskResult = taskResult;
     }
 
-    @Override
-    public int compareTo(Task task) {
-        if (taskResult == task.taskResult)
-            return 0;
-        else if (taskResult > task.taskResult)
-            return 1;
-        else
-            return -1;
-    }
-
 }

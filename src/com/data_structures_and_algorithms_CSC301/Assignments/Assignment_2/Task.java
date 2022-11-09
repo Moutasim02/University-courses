@@ -2,9 +2,9 @@ package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_2;
 
 import java.util.Date;
 
-public class Task extends AbstractTask {
-    private String taskName;
-    private int taskCreationMinutes;
+public class Task extends AbstractTask implements Comparable<Task> {
+    private String taskExpression;
+    private long taskCreationSecond;
     private boolean taskIsPrioritized;
     private String taskStatus;
 

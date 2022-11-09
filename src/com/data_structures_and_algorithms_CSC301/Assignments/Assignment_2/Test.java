@@ -51,7 +51,7 @@ public class Test {
     private static int UserMenuChoice(Scanner input) {
         int choice;
         do {
-            System.out.print("Your choice (0, 1, 2, 3, 4, 5, 6, 7):");
+            System.out.print("Your choice (0, 1, 2, 3, 4, 5, 6, 7): " + Constants.ANSI_RESET);
             choice = input.nextInt();
         } while (choice > 7);
         return choice;
@@ -68,9 +68,9 @@ public class Test {
 
         // Create the task
         if (isPrioritized)
-            robots.get(robotIndex).getTasksToHandleInPriority().add(new Task(taskName, new Date().getMinutes(), true));
+            robots.get(robotIndex).getTasksToHandleInPriority().add(new Task(taskName, true));
         else
-            robots.get(robotIndex).getTasksToHandleInQueue().add(new Task(taskName, new Date().getMinutes(), false));
+            robots.get(robotIndex).getTasksToHandleInQueue().add(new Task(taskName, false));
 
         System.out.println("Task created");
     }
@@ -78,7 +78,7 @@ public class Test {
     private static void runTasks() {
         int robotIndex = AbstractRobot.chooseRobot();
 
-        System.out.print("How many tasks to execute? ");
+        System.out.print(Constants.ANSI_BLUE + "How many tasks do you want to execute? " + Constants.ANSI_RESET);
         int tasksToExecute = scanner.nextInt();
 
         PriorityQueue<Task> copyOfPriorityQueue = new PriorityQueue<>(robots.get(robotIndex).getTasksToHandleInPriority());

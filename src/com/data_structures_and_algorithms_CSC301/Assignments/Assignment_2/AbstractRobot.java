@@ -9,7 +9,7 @@ public abstract class AbstractRobot {
         Scanner scanner = new Scanner(System.in);
 
         if (robots.isEmpty()) {
-            System.out.println("Please create robot first!");
+            System.out.println(Constants.ANSI_RED + "Please create a robot first!" + Constants.ANSI_RESET);
             return createRobot(robots, scanner);
         } else {
             System.out.println(Constants.ANSI_RED + "1- Use an existing robot");
@@ -17,7 +17,7 @@ public abstract class AbstractRobot {
 
             int userChoice = scanner.nextInt();
             if (userChoice == 1) {
-                System.out.println("Which robot you want to add the task to? ");
+                System.out.println(Constants.ANSI_BLUE + "Which robot do you want to add the task to? " + Constants.ANSI_RESET);
                 showAllRobots(robots);
                 System.out.print(Constants.ANSI_BLUE + "Robot number: " + Constants.ANSI_RESET);
                 return scanner.nextInt();

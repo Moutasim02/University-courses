@@ -27,17 +27,17 @@ public class VirusMS {
                     addVirusToLab(labChoice);
                     break;
                 case 3:
-                    System.out.print("Which virus you want to list all its lab instances? \n> ");
+                    System.out.print("Which virus do you want to list all of its lab instances? \n> ");
                     String userVirusName = String.valueOf(input.nextLine());
                     listAllResearchLabs(userVirusName);
                     break;
                 case 4:
-                    System.out.print("Which category you want to delete all viruses? \n> ");
+                    System.out.print("Which lab category do you want to delete all viruses from? \n> ");
                     String userCategory = String.valueOf(input.nextLine());
                     deleteAllViruses(userCategory);
                     break;
                 case 5:
-                    System.out.print("Which virus you want to search for? \n> ");
+                    System.out.print("Which virus do you want to search for? \n> ");
                     String usVName = String.valueOf(input.nextLine());
                     search4Virus(usVName);
                     break;
@@ -75,12 +75,12 @@ public class VirusMS {
 
     public static void addResearchLab() {
         Scanner khaled = new Scanner(System.in);
-        System.out.print("Add category: ");
+        System.out.print("Add lab category: ");
         String category = khaled.nextLine();
-        System.out.print("Add location: ");
+        System.out.print("Add lab location: ");
         String location = khaled.nextLine();
-        System.out.print("Add size: ");
-        int size = khaled.nextInt();
+        System.out.print("Add lab size: ");
+        String size = khaled.nextLine();
         researchLabs.add(new ResearchLab(category, location, size));
     }
 
