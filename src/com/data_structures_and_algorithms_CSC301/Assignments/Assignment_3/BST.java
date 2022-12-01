@@ -19,6 +19,16 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
         }
     }
 
+    /**
+     * Returns the number of occurrences of a word from the tree
+     * */
+//    public int getWordOccurrence(String word) {
+//        int count = 0;
+//
+//
+//    }
+
+
     @Override
     /** Return true if the element is in the tree */
     public boolean search(E e) {

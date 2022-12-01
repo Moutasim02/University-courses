@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestBST {
-    public static void main(String[] args) {
+    public static void main(String[] args) { // the,
         ArrayList<String> words = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(new File("input.txt"));
@@ -26,6 +26,8 @@ public class TestBST {
         String[] strings = words.toArray(new String[0]);
         BST<String> binarySearchTree = new BST<>(strings);
         binarySearchTree.print();
+
+
 
     }
 }
