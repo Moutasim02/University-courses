@@ -13,7 +13,6 @@ public abstract class AbstractTask {
 
     // Priorities are not being added to the PriorityQueue in ascending/ descending order.
     protected static boolean checkIfPrioritized() {
-
         System.out.println("Should we prioritize the task?");
         System.out.println("1- Yes");
         System.out.print("2- No" + "\n> ");
