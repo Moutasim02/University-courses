@@ -6,12 +6,12 @@ public boolean search(E e);
 
 /** Insert element e into the binary search tree.
  * Return true if the element is inserted successfully. */
-public boolean insert(E e);
+public boolean insert(E e, int lineNum);
 
 /** Delete the specified element from the tree.
  * Return true if the element is deleted successfully. */
 public boolean delete(E e);
- 
+
 public void inorder(); /** Inorder traversal from the root*/
 
 public void postorder(); /** Postorder traversal from the root */

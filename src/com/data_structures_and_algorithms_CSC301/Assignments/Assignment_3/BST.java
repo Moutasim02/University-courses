@@ -1,8 +1,11 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_3;
 
+import java.util.ArrayList;
+
 public class BST<E extends Comparable<E>> extends AbstractTree<E> {
     protected TreeNode<E> root;
     protected int size = 0;
+
 
     /**
      * Create a default binary search tree
@@ -11,35 +14,50 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
     }
 
     /**
-     * Create a binary search tree from an array of objects
+     * Returns the number of occurrences of a word from the tree
      */
-    public BST(E[] objects) {
-        for (int i = 0; i < objects.length; i++) {
-            insert(objects[i]);
+    public int getWordOccurrence(E e) {
+        TreeNode<E> current = root;
+        while (current != null) {
+            if (e.compareTo(current.element) < 0) {
+                current = current.left;
+            } else if (e.compareTo(current.element) > 0) {
+                current = current.right;
+            } else {
+                return current.getWordOccurrence();
+            }
         }
+        return 0;
     }
 
-    /**
-     * Returns the number of occurrences of a word from the tree
-     * */
-//    public int getWordOccurrence(String word) {
-//        int count = 0;
-//
-//
-//    }
-
+    public ArrayList<Integer> getLineOfOccurrence(E e) {
+        TreeNode<E> current = root;
+        while (current != null) {
+            if (e.compareTo(current.element) < 0) {
+                current = current.left;
+            } else if (e.compareTo(current.element) > 0) {
+                current = current.right;
+            } else {
+                return current.getLineNumber();
+            }
+        }
+        return null;
+    }
 
     @Override
     /** Return true if the element is in the tree */
     public boolean search(E e) {
         TreeNode<E> current = root; // Start from the root
         while (current != null) {
-            if (e.compareTo(current.element) < 0)
+            if (e.compareTo(current.element) < 0) {
                 current = current.left;
-            else if (e.compareTo(current.element) > 0)
+            }
+            else if (e.compareTo(current.element) > 0) {
                 current = current.right;
-            else // element matches current.element
+            }
+            else {
                 return true; // Element is found
+            }
         }
         return false;
     }
@@ -51,28 +69,38 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
     @Override
     /** Insert element e into the binary search tree.
      * Return true if the element is inserted successfully. */
-    public boolean insert(E e) {
-        if (root == null)
+    public boolean insert(E e, int lineNum) {
+        if (root == null) {
             root = createNewNode(e); // Create a new root
-        else {
+            root.lineNumber.add(lineNum);
+        } else {
             // Locate the parent node
             TreeNode<E> parent = null;
             TreeNode<E> current = root;
-            while (current != null)
-                if (e.compareTo(current.element) < 0) {
+
+            //TODO: Fix the first occurrence not being counted
+            while (current != null) {
+                if (e.compareTo(current.element) < 0) { // -1, a comes before b
                     parent = current;
                     current = current.left;
-                } else if (e.compareTo(current.element) > 0) {
+                    current.getLineNumber().add(lineNum);
+                } else if (e.compareTo(current.element) > 0) { // 1, b comes after a
                     parent = current;
                     current = current.right;
-                } else
-                    return false; // Duplicate node not inserted
-
+                    current.getLineNumber().add(lineNum);
+                } else { // 0 - Duplicated word
+                    current.wordOccurrence += 1;
+                    current.lineNumber.add(lineNum);
+                    return false;
+                }
+            }
             // Create the new node and attach it to the parent node
-            if (e.compareTo(parent.element) < 0)
+            if (e.compareTo(parent.element) < 0) {
                 parent.left = createNewNode(e);
-            else
+            }
+            else {
                 parent.right = createNewNode(e);
+            }
         }
         size++;
         return true; // Element inserted successfully
@@ -116,6 +144,8 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
     public int getSize() {
         return size;
     }
+
+
 
     /**
      * Returns the root of the tree
@@ -204,6 +234,8 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
         size--;
         return true; // Element deleted successfully
     }
+
+
 
     @Override
     /** Obtain an iterator. Use inorder. */

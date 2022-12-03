@@ -1,33 +1,39 @@
 package com.data_structures_and_algorithms_CSC301.Assignments.Assignment_3;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.Scanner;
 
 public class TestBST {
-    public static void main(String[] args) { // the,
-        ArrayList<String> words = new ArrayList<>();
+    public static void main(String[] args) {
+        BST<String> binarySearchTree = new BST<>();
         try {
-            Scanner scanner = new Scanner(new File("input.txt"));
-            while (scanner.hasNext()) {
-                String temp = scanner.next().replaceAll("[\"()]", "").toLowerCase();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("input.txt"));
+            LineNumberReader lineNumberReader = new LineNumberReader(bufferedReader);
 
-                if (!(temp.replaceAll("[,:]", "").equals("the") ||
-                        temp.replaceAll("[,:]", "").equals("a") ||
-                        temp.replaceAll("[,:]", "").equals("an"))) {
-                    words.add(0, temp);
+            while (lineNumberReader.ready()) {
+                int lineNum = lineNumberReader.getLineNumber() + 1;
+                String temp = lineNumberReader.readLine().replaceAll("[\"()?,.!;:-]", "").toLowerCase();
+                Scanner sc = new Scanner(temp);
+                while (sc.hasNext()) {
+                    String next = sc.next();
+                    if (!(next.equals("the") ||
+                            next.equals("a") ||
+                            next.equals("an"))) {
+                        binarySearchTree.insert(next, lineNum);
+                    }
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Wrong File Name!");
         }
 
-        String[] strings = words.toArray(new String[0]);
-        BST<String> binarySearchTree = new BST<>(strings);
+        System.out.println(binarySearchTree.getWordOccurrence("five"));
+        System.out.println(binarySearchTree.getLineOfOccurrence("five"));
+
         binarySearchTree.print();
-
-
 
     }
 }
