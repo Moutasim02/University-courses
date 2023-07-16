@@ -16,7 +16,7 @@ public class SecretKeyGeneratorTest {
                 writer.write(s + "\n");
             }
             writer.close();
-            System.out.println("Output written to output.txt");
+            System.out.println(Constants.ANSI_BLUE + "Output written to output.txt" + Constants.ANSI_RESET);
         } catch (IOException e) {
             System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
