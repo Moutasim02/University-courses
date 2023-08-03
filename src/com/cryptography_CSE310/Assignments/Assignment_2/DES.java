@@ -17,6 +17,7 @@ public class DES {
         }
         return getPlaintext();
     }
+
     private static String encryptHelper(String text, String key) {
         BitPermutation bitPermutation = new BitPermutation();
 
@@ -48,19 +49,19 @@ public class DES {
         String s = bitPermutation.finalPermutation(reversed);
 
         System.out.printf("""
-                
-                Round #%d:
-                Initial Permutation: %s
-                Left Side: %s
-                Right Side: %s
-                Expanded: %s
-                First XOR: %s
-                After SBox: %s
-                Second Permutation: %s
-                Second XOR: %s
-                Reversed(RL): %s
-                
-                """, round, initialPermutation, leftSide, rightSide,
+                                        
+                        Round #%d:
+                        Initial Permutation: %s
+                        Left Side: %s
+                        Right Side: %s
+                        Expanded: %s
+                        First XOR: %s
+                        After SBox: %s
+                        Second Permutation: %s
+                        Second XOR: %s
+                        Reversed(RL): %s
+                                        
+                        """, round, initialPermutation, leftSide, rightSide,
                 expanded, firstXOR, str, secondPerm, secondXOR, reversed);
         round++;
         return s;
