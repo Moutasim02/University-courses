@@ -2,8 +2,15 @@ package com.cryptography_CSE310.Project;
 
 public class CryptoUtils {
     public static String xor(String permutationOutput, String key) {
-        // Implement XOR logic here
-        // ...
-        return ""; // Replace this with the XOR result
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < 8; i++) {
+            if (key.charAt(i) == permutationOutput.charAt(i)) {
+                str.append("0");
+            } else {
+                str.append("1");
+            }
+        }
+        return str.toString();
     }
 }
+
