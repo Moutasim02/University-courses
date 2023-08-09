@@ -5,6 +5,7 @@ public class CustomCipherAlgorithm {
     private static final int BLOCK_SIZE = 8;
     public int roundNumber = 1;
     private String text = "";
+    SBox sBox = new SBox();
 
     public void setText(String text) {
         this.text = text;
@@ -24,6 +25,7 @@ public class CustomCipherAlgorithm {
                 case 4 -> setText(encryptHelper(text, key[4]));
             }
         }
+        System.out.println(sBox.toString());
         return text;
     }
 
@@ -43,8 +45,8 @@ public class CustomCipherAlgorithm {
             int secondSBoxNumber = Integer.parseInt(key, 2) % 10;
 
             String sBoxOutput;
-            sBoxOutput = SBox.applySBox(currentPlainTextBlock, firstSBoxNumber);
-            sBoxOutput = SBox.applySBox(sBoxOutput, secondSBoxNumber);
+            sBoxOutput = sBox.applySBox(currentPlainTextBlock, firstSBoxNumber);
+            sBoxOutput = sBox.applySBox(sBoxOutput, secondSBoxNumber);
 
             BitPermutation bitPermutation = new BitPermutation();
             String permutationOutput = bitPermutation.applyPermutation(sBoxOutput, roundNumber);
@@ -80,6 +82,7 @@ public class CustomCipherAlgorithm {
                 case 4 -> decryptedText = decryptHelper(encryptedText, key[4]);
             }
         }
+        System.out.println(sBox.printInverseSBoxes());
         return decryptedText.toString();
     }
 
@@ -97,12 +100,12 @@ public class CustomCipherAlgorithm {
 
             BitPermutation bitPermutation = new BitPermutation();
             String inversePermutationOutput = bitPermutation.inversePermutation(xorResult, roundNumber);
-            // Put it inside the secondsbox, and then first sbox to decrypt
+
             int firstKey = Integer.parseInt(key, 2) % 10;
             int secondKey = Integer.parseInt(reverseString(key), 2) % 10;
 
-            String inverseSBoxOutput = SBox.applyInverseSBox(inversePermutationOutput, firstKey);
-            inverseSBoxOutput = SBox.applyInverseSBox(inverseSBoxOutput, secondKey);
+            String inverseSBoxOutput = sBox.applyInverseSBox(inversePermutationOutput, firstKey);
+            inverseSBoxOutput = sBox.applyInverseSBox(inverseSBoxOutput, secondKey);
 
             decryptedText.append(inverseSBoxOutput);
             startIndex = endIndex;

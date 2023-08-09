@@ -1,8 +1,73 @@
 package com.cryptography_CSE310.Project;
 
-public class SBox {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-    public static String applySBox(String block, int sBoxNumber) {
+public class SBox {
+    int[][] firstSBox = generateSBOX();
+    int[][] inverseFirstSBox = generateInverseSBox(firstSBox);
+
+    int[][] secondSBox = generateSBOX();
+    int[][] inverseSecondSBox = generateInverseSBox(secondSBox);
+
+    int[][] thirdSBox = generateSBOX();
+    int[][] inverseThirdSBox = generateInverseSBox(thirdSBox);
+
+    int[][] fourthSBox = generateSBOX();
+    int[][] inverseFourthSBox = generateInverseSBox(fourthSBox);
+
+    int[][] fifthSBox = generateSBOX();
+    int[][] inverseFifthSBox = generateInverseSBox(fifthSBox);
+
+    int[][] sixthSBox = generateSBOX();
+    int[][] inverseSixthSBox = generateInverseSBox(sixthSBox);
+
+    int[][] seventhSBox = generateSBOX();
+    int[][] inverseSeventhSBox = generateInverseSBox(seventhSBox);
+
+    int[][] eighthSBox = generateSBOX();
+    int[][] inverseEighthSBox = generateInverseSBox(eighthSBox);
+
+    int[][] ninthSBox = generateSBOX();
+    int[][] inverseNinthSBox = generateInverseSBox(ninthSBox);
+
+    int[][] tenthSBox = generateSBOX();
+    int[][] inverseTenthSBox = generateInverseSBox(tenthSBox);
+
+    public String printInverseSBoxes() {
+        return Constants.ANSI_BLUE + "I-SBox" + Constants.ANSI_RESET + " {" +
+                "\ninverseFirstSBox=" + Arrays.deepToString(inverseFirstSBox) +
+                " \ninverseSecondSBox=" + Arrays.deepToString(inverseSecondSBox) +
+                " \ninverseThirdSBox=" + Arrays.deepToString(inverseThirdSBox) +
+                " \ninverseFourthSBox=" + Arrays.deepToString(inverseFourthSBox) +
+                " \ninverseFifthSBox=" + Arrays.deepToString(inverseFifthSBox) +
+                " \ninverseSixthSBox=" + Arrays.deepToString(inverseSixthSBox) +
+                " \ninverseSeventhSBox=" + Arrays.deepToString(inverseSeventhSBox) +
+                " \ninverseEighthSBox=" + Arrays.deepToString(inverseEighthSBox) +
+                " \ninverseNinthSBox=" + Arrays.deepToString(inverseNinthSBox) +
+                " \ninverseTenthSBox=" + Arrays.deepToString(inverseTenthSBox) +
+                "\n}";
+    }
+
+    @Override
+    public String toString() {
+        return Constants.ANSI_BLUE + "SBox" + Constants.ANSI_RESET + " {" +
+                "\nfirstSBox=" + Arrays.deepToString(firstSBox) +
+                " \nsecondSBox=" + Arrays.deepToString(secondSBox) +
+                " \nthirdSBox=" + Arrays.deepToString(thirdSBox) +
+                " \nfourthSBox=" + Arrays.deepToString(fourthSBox) +
+                " \nfifthSBox=" + Arrays.deepToString(fifthSBox) +
+                " \nsixthSBox=" + Arrays.deepToString(sixthSBox) +
+                " \nseventhSBox=" + Arrays.deepToString(seventhSBox) +
+                " \neighthSBox=" + Arrays.deepToString(eighthSBox) +
+                " \nninthSBox=" + Arrays.deepToString(ninthSBox) +
+                " \ntenthSBox=" + Arrays.deepToString(tenthSBox) +
+                "\n}";
+    }
+
+    public String applySBox(String block, int sBoxNumber) {
         int[][] selectedSBox = switch (sBoxNumber) {
             case 1 -> firstSBox;
             case 2 -> secondSBox;
@@ -28,7 +93,7 @@ public class SBox {
         return result.toString();
     }
 
-    public static String applyInverseSBox(String block, int sBoxNumber) {
+    public String applyInverseSBox(String block, int sBoxNumber) {
         int[][] selectedSBox = switch (sBoxNumber) {
             case 1 -> generateInverseSBox(firstSBox);
             case 2 -> generateInverseSBox(secondSBox);
@@ -54,77 +119,25 @@ public class SBox {
         return result.toString();
     }
 
-    static int[][] firstSBox = {
-            {14, 2, 4, 8},
-            {7, 10, 1, 5},
-            {9, 15, 12, 6},
-            {3, 13, 11, 0}
-    };
+    public int[][] generateSBOX() {
+        int[][] sBox = new int[4][4];
+        List<Integer> numbers = new ArrayList<>();
 
-    static final int[][] secondSBox = {
-            {12, 6, 15, 13},
-            {3, 10, 4, 8},
-            {2, 5, 9, 14},
-            {0, 1, 7, 11}
-    };
+        for (int i = 0; i < 16; i++) {
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                sBox[i][j] = numbers.get(index);
+                index++;
+            }
+        }
+        return sBox;
+    }
 
-    static final int[][] thirdSBox = {
-            {2, 5, 9, 1},
-            {10, 3, 0, 15},
-            {13, 7, 12, 6},
-            {11, 14, 8, 4}
-    };
-
-    static final int[][] fourthSBox = {
-            {3, 0, 8, 9},
-            {2, 6, 5, 4},
-            {14, 15, 10, 12},
-            {13, 11, 7, 1}
-    };
-
-    static final int[][] fifthSBox = {
-            {0, 1, 2, 3},
-            {4, 5, 6, 7},
-            {8, 9, 10, 11},
-            {12, 13, 14, 15}
-    };
-
-    static final int[][] sixthSBox = {
-            {1, 2, 4, 8},
-            {3, 6, 12, 5},
-            {7, 14, 9, 11},
-            {15, 13, 10, 0}
-    };
-
-    static final int[][] seventhSBox = {
-            {6, 14, 9, 2},
-            {15, 5, 8, 13},
-            {12, 7, 0, 4},
-            {10, 1, 3, 11}
-    };
-
-    static final int[][] eighthSBox = {
-            {0, 12, 10, 3},
-            {5, 11, 15, 9},
-            {2, 8, 7, 4},
-            {6, 13, 14, 1}
-    };
-
-    static final int[][] ninthSBox = {
-            {15, 14, 13, 12},
-            {11, 10, 9, 8},
-            {7, 6, 5, 4},
-            {3, 2, 1, 0}
-    };
-
-    static final int[][] tenthSBox = {
-            {5, 10, 15, 0},
-            {9, 14, 3, 8},
-            {13, 2, 7, 12},
-            {1, 6, 11, 4}
-    };
-
-    public static int[][] generateInverseSBox(int[][] sBox) {
+    public int[][] generateInverseSBox(int[][] sBox) {
         int[][] inverseSBox = new int[4][4];
 
         for (int i = 0; i < 4; i++) {
