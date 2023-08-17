@@ -95,16 +95,16 @@ public class SBox {
 
     public String applyInverseSBox(String block, int sBoxNumber) {
         int[][] selectedSBox = switch (sBoxNumber) {
-            case 1 -> generateInverseSBox(firstSBox);
-            case 2 -> generateInverseSBox(secondSBox);
-            case 3 -> generateInverseSBox(thirdSBox);
-            case 4 -> generateInverseSBox(fourthSBox);
-            case 5 -> generateInverseSBox(fifthSBox);
-            case 6 -> generateInverseSBox(sixthSBox);
-            case 7 -> generateInverseSBox(seventhSBox);
-            case 8 -> generateInverseSBox(eighthSBox);
-            case 9 -> generateInverseSBox(ninthSBox);
-            case 10 -> generateInverseSBox(tenthSBox);
+            case 1 -> inverseFirstSBox;
+            case 2 -> inverseSecondSBox;
+            case 3 -> inverseThirdSBox;
+            case 4 -> inverseFourthSBox;
+            case 5 -> inverseFifthSBox;
+            case 6 -> inverseSixthSBox;
+            case 7 -> inverseSeventhSBox;
+            case 8 -> inverseEighthSBox;
+            case 9 -> inverseNinthSBox;
+            case 10 -> inverseTenthSBox;
             default -> throw new IllegalArgumentException("Invalid sBoxNumber: " + sBoxNumber);
         };
 
