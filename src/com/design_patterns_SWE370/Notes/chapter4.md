@@ -18,5 +18,14 @@
   - Motivation in learning.
 
 ## Design patterns example
-- Duck example: when adding fly() at super class, we might have extended a duck that doesn't fly, this breaks liskov substitution principle.
+- Duck example: when adding fly() at super class, we might have extended a duck that doesn't fly, this will introduce undefined behaviour.
+- Inheritance is not good when we have behaviour change.
+- Using Flyable interface is not the optimal solution because:
+  - It minimizes the code usability (Re-usability)
+  - Make the behaviour implementation repeating (fly() in each class) because interface doesn't implement behaviour
+  
+- The solution is to "encapsulate what varies".
+  - take the common behaviour and put it in a separate class
+  - Favor delegation over inheritance
 
+- Code to an interface (Different from using interface)
