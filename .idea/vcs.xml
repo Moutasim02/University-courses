@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/com/programming_II_CSC202/Assignments/AssignmentTwo/Exercise15_04" vcs="" />
-    <mapping directory="$PROJECT_DIR$/src/com/programming_II_CSC202/Assignments/AssignmentTwo/SimpleCalculator" vcs="" />
   </component>
 </project>
